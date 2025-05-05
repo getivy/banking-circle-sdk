@@ -95,9 +95,71 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "activities": [
+                         *         {
+                         *           "transactionDate": "2023-11-13T00:00:00+00:00",
+                         *           "valueDate": "2023-11-13T00:00:00+00:00",
+                         *           "credit": null,
+                         *           "debit": 4.23,
+                         *           "balance": 4999425.22,
+                         *           "referenceNumber": "010F210213290002",
+                         *           "description": "Outgoing Payment",
+                         *           "paymentDetails": "RemiInfoLine RemiInfoLine RemiInfoLine",
+                         *           "beneficiaryRemitter1": "DK100000000011000",
+                         *           "beneficiaryRemitter2": "CreditorName",
+                         *           "statusReasonCode": "AC01",
+                         *           "statusReasonDescription": "Format of recipient account is not valid in association with the clearing code"
+                         *         }
+                         *       ],
+                         *       "auxiliaryInformation": {
+                         *         "CustomerName": "Hello Limited",
+                         *         "AccountNumber": "DK0110001110000111",
+                         *         "AccountCurrency": "GBP",
+                         *         "ReportDate": "2024-01-15",
+                         *         "AccountType": "Operating and Fee account"
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["AccountActivityReport"];
+                        /** @example {
+                         *       "activities": [
+                         *         {
+                         *           "transactionDate": "2023-11-13T00:00:00+00:00",
+                         *           "valueDate": "2023-11-13T00:00:00+00:00",
+                         *           "credit": null,
+                         *           "debit": 4.23,
+                         *           "balance": 4999425.22,
+                         *           "referenceNumber": "010F210213290002",
+                         *           "description": "Outgoing Payment",
+                         *           "paymentDetails": "RemiInfoLine RemiInfoLine RemiInfoLine",
+                         *           "beneficiaryRemitter1": "DK100000000011000",
+                         *           "beneficiaryRemitter2": "CreditorName",
+                         *           "statusReasonCode": "AC01",
+                         *           "statusReasonDescription": "Format of recipient account is not valid in association with the clearing code"
+                         *         }
+                         *       ],
+                         *       "auxiliaryInformation": {
+                         *         "CustomerName": "Hello Limited",
+                         *         "AccountNumber": "DK0110001110000111",
+                         *         "AccountCurrency": "GBP",
+                         *         "ReportDate": "2024-01-15",
+                         *         "AccountType": "Operating and Fee account"
+                         *       }
+                         *     } */
                         "application/pdf": components["schemas"]["AccountActivityReport"];
+                        /** @example Transaction Date,Value Date,Credit,Debit,Balance,Reference Number,Description,Payment Details,Beneficiary/Remitter 1,Beneficiary/Remitter 2
+                         *     11/13/23,11/13/23,,"4.23","4,999,425.22",010F210213290002,Outgoing Payment,,"DK100000000011000","CreditorName"
+                         *      */
                         "application/csv": string;
+                        /** @example {1:F01A1111111111}{2:O940XXXXXXXXXXXXN}{3:{108:99093525}}{4:
+                         *     :20:99093525
+                         *     :25:DK0110001110000111
+                         *     :28C:99/1
+                         *     :60F:C010101GBP4999429,45
+                         *     :61:2311131113D4,23NMSCNONREF//010F210213290002
+                         *     :86:CreditorName
+                         *     :62F:C010101GBP4999425,22
+                         *     -} */
                         "application/mt940": string;
                     };
                 };
@@ -228,9 +290,71 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "activities": [
+                         *         {
+                         *           "transactionDate": "2023-11-13T00:00:00+00:00",
+                         *           "valueDate": "2023-11-13T00:00:00+00:00",
+                         *           "credit": null,
+                         *           "debit": 4.23,
+                         *           "balance": 4999425.22,
+                         *           "referenceNumber": "010F210213290002",
+                         *           "description": "Outgoing Payment",
+                         *           "paymentDetails": "RemiInfoLine RemiInfoLine RemiInfoLine",
+                         *           "beneficiaryRemitter1": "DK100000000011000",
+                         *           "beneficiaryRemitter2": "CreditorName",
+                         *           "statusReasonCode": "AC01",
+                         *           "statusReasonDescription": "Format of recipient account is not valid in association with the clearing code"
+                         *         }
+                         *       ],
+                         *       "auxiliaryInformation": {
+                         *         "CustomerName": "Hello Limited",
+                         *         "AccountNumber": "DK0110001110000111",
+                         *         "AccountCurrency": "GBP",
+                         *         "ReportDate": "2024-01-15",
+                         *         "AccountType": "Operating and Fee account"
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["AccountActivityReport"];
+                        /** @example Transaction Date,Value Date,Credit,Debit,Balance,Reference Number,Description,Payment Details,Beneficiary/Remitter 1,Beneficiary/Remitter 2
+                         *     11/13/23,11/13/23,,"4.23","4,999,425.22",010F210213290002,Outgoing Payment,,"DK100000000011000","CreditorName"
+                         *      */
                         "application/csv": string;
+                        /** @example {1:F01A1111111111}{2:O940XXXXXXXXXXXXN}{3:{108:99093525}}{4:
+                         *     :20:99093525
+                         *     :25:DK0110001110000111
+                         *     :28C:99/1
+                         *     :60F:C010101GBP4999429,45
+                         *     :61:2311131113D4,23NMSCNONREF//010F210213290002
+                         *     :86:CreditorName
+                         *     :62F:C010101GBP4999425,22
+                         *     -} */
                         "application/mt940": string;
+                        /** @example {
+                         *       "activities": [
+                         *         {
+                         *           "transactionDate": "2023-11-13T00:00:00+00:00",
+                         *           "valueDate": "2023-11-13T00:00:00+00:00",
+                         *           "credit": null,
+                         *           "debit": 4.23,
+                         *           "balance": 4999425.22,
+                         *           "referenceNumber": "010F210213290002",
+                         *           "description": "Outgoing Payment",
+                         *           "paymentDetails": "RemiInfoLine RemiInfoLine RemiInfoLine",
+                         *           "beneficiaryRemitter1": "DK100000000011000",
+                         *           "beneficiaryRemitter2": "CreditorName",
+                         *           "statusReasonCode": "AC01",
+                         *           "statusReasonDescription": "Format of recipient account is not valid in association with the clearing code"
+                         *         }
+                         *       ],
+                         *       "auxiliaryInformation": {
+                         *         "CustomerName": "Hello Limited",
+                         *         "AccountNumber": "DK0110001110000111",
+                         *         "AccountCurrency": "GBP",
+                         *         "ReportDate": "2024-01-15",
+                         *         "AccountType": "Operating and Fee account"
+                         *       }
+                         *     } */
                         "application/pdf": components["schemas"]["AccountActivityReport"];
                     };
                 };
@@ -282,7 +406,24 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "accountBalances": [
+                         *         {
+                         *           "account": "DE01001100000000010111",
+                         *           "balance": 48432.88,
+                         *           "currency": "EUR",
+                         *           "channelUserId": "someuser@bankingcircle.com",
+                         *           "transactionDate": "2023-11-13T00:00:00",
+                         *           "reportDate": "2024-01-15T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "availableBalance": -338.4
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["AccountBalanceReport"];
+                        /** @example P_ID_CHANNELUSER,P_TXNDATE,REPORT_DATE,CUSTOMERID,ACCOUNT,ACCOUNT_CURRENCY,CURBALANCE,AVLBALANCE
+                         *     someuser@bankingcircle.com,2023-11-13T00:00:00.0000000+00:00,09042025,999999999,DE01001100000000010111,EUR,48432.88,-338.40
+                         *      */
                         "application/csv": string;
                     };
                 };
@@ -517,7 +658,143 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "reconciliations": [
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "LU000010000011110100",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 8,
+                         *           "creditAmount": null,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": null,
+                         *           "statusReasonDescription": null,
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         },
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "DK5489000000014303",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 123.45,
+                         *           "creditAmount": 123.45,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": "1170",
+                         *           "statusReasonDescription": "Rejected as the beneficiary cannot receive these funds",
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["ReconciliationReport"];
+                        /** @example P_ID_CHANNELUSER,P_TXNDATE,REPORT_DATE,CUSTOMERID,ACCOUNT,ACCOUNT_CURRENCY,DEBIT_AMOUNT,CREDIT_AMOUNT,VALUE_DATE,INSTRUCTED_AMOUNT,INSTRUCTED_AMOUNT_CURRENCY,TRANSACTION_AMOUNT,TRANSACTION_AMOUNT_CURRENCY,EXCHANGE_RATE,DEBTOR_BANK_CODE,DEBTOR_ACCOUNT,DEBTOR_LINE_1,DEBTOR_LINE_2,DEBTOR_LINE_3,DEBTOR_LINE_4,BENEFICIARY_BANK_CODE,BENEFICIARY_ACCOUNT,BENEFICIARY_LINE_1,BENEFICIARY_LINE_2,BENEFICIARY_LINE_3,BENEFICIARY_LINE_4,PAYMENT_REFERENCE_NUMBER,FILE_REFERENCE_NUMBER,USER_REFERENCE_NUMBER,PAYMENT_DETAILS_1,PAYMENT_DETAILS_2,PAYMENT_DETAILS_3,PAYMENT_DETAILS_4,CREDIT_DEBIT_INDICATOR,BANK_TRNS_CODE_DOMAIN,BANK_TRNS_CODE_FAMILY
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,LU000010000011110100,EUR,8,0,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,DK5489000000014303,EUR,123.45,123.45,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *      */
                         "application/csv": string;
                     };
                 };
@@ -527,7 +804,39 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "toTransactionDate": [
+                         *           "A value for the 'ToTransactionDate' parameter or property was not provided."
+                         *         ],
+                         *         "fromTransactionDate": [
+                         *           "A value for the 'FromTransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["ReconciliationReportError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "toTransactionDate": [
+                         *           "A value for the 'ToTransactionDate' parameter or property was not provided."
+                         *         ],
+                         *         "fromTransactionDate": [
+                         *           "A value for the 'FromTransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/csv": components["schemas"]["ReconciliationReportError400Details"];
                     };
                 };
@@ -760,7 +1069,143 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "reconciliations": [
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "LU000010000011110100",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 8,
+                         *           "creditAmount": null,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": null,
+                         *           "statusReasonDescription": null,
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         },
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "DK5489000000014303",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 123.45,
+                         *           "creditAmount": 123.45,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": "1170",
+                         *           "statusReasonDescription": "Rejected as the beneficiary cannot receive these funds",
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["ReconciliationReport"];
+                        /** @example P_ID_CHANNELUSER,P_TXNDATE,REPORT_DATE,CUSTOMERID,ACCOUNT,ACCOUNT_CURRENCY,DEBIT_AMOUNT,CREDIT_AMOUNT,VALUE_DATE,INSTRUCTED_AMOUNT,INSTRUCTED_AMOUNT_CURRENCY,TRANSACTION_AMOUNT,TRANSACTION_AMOUNT_CURRENCY,EXCHANGE_RATE,DEBTOR_BANK_CODE,DEBTOR_ACCOUNT,DEBTOR_LINE_1,DEBTOR_LINE_2,DEBTOR_LINE_3,DEBTOR_LINE_4,BENEFICIARY_BANK_CODE,BENEFICIARY_ACCOUNT,BENEFICIARY_LINE_1,BENEFICIARY_LINE_2,BENEFICIARY_LINE_3,BENEFICIARY_LINE_4,PAYMENT_REFERENCE_NUMBER,FILE_REFERENCE_NUMBER,USER_REFERENCE_NUMBER,PAYMENT_DETAILS_1,PAYMENT_DETAILS_2,PAYMENT_DETAILS_3,PAYMENT_DETAILS_4,CREDIT_DEBIT_INDICATOR,BANK_TRNS_CODE_DOMAIN,BANK_TRNS_CODE_FAMILY
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,LU000010000011110100,EUR,8,0,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,DK5489000000014303,EUR,123.45,123.45,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *      */
                         "application/csv": string;
                     };
                 };
@@ -1040,7 +1485,143 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "reconciliations": [
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "LU000010000011110100",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 8,
+                         *           "creditAmount": null,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": null,
+                         *           "statusReasonDescription": null,
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         },
+                         *         {
+                         *           "pIdChannelUser": "someuser@bankingcircle.com",
+                         *           "pTxnDate": "2021-12-01T00:00:00+00:00",
+                         *           "reportDate": "2022-01-31T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "DK5489000000014303",
+                         *           "accountCurrency": "EUR",
+                         *           "debitAmount": 123.45,
+                         *           "creditAmount": 123.45,
+                         *           "valueDate": "2021-12-01T00:00:00+00:00",
+                         *           "instructedAmount": 8,
+                         *           "instructedAmountCurrency": "EUR",
+                         *           "transactionAmount": 8,
+                         *           "transactionAmountCurrency": "EUR",
+                         *           "exchangeRate": 1,
+                         *           "debtorBankCode": "SXPYDKKKXXX",
+                         *           "debtorAccount": "LU000010000011110100",
+                         *           "debtorLine1": "Hello Limited",
+                         *           "debtorLine2": "Test street 1",
+                         *           "debtorLine3": "Test town 2",
+                         *           "debtorLine4": "GB-London 567890",
+                         *           "beneficiaryBankCode": "SXPYDKKKXXX",
+                         *           "beneficiaryAccount": "DK0111000011111111",
+                         *           "beneficiaryLine1": "Test creditor name",
+                         *           "beneficiaryLine2": "Streetname 40",
+                         *           "beneficiaryLine3": "DK-8000 Aarhus C Denmark",
+                         *           "beneficiaryLine4": "Address line 3",
+                         *           "paymentReferenceNumber": "010F101010110001",
+                         *           "fileReferenceNumber": "7495c92b-37e9-448d-a604-360d7ecc7c4b",
+                         *           "userReferenceNumber": "99999999PHX",
+                         *           "paymentDetails1": "DE iban DK debit",
+                         *           "paymentDetails2": "",
+                         *           "paymentDetails3": "",
+                         *           "paymentDetails4": "",
+                         *           "creditDebitIndicator": "DBIT",
+                         *           "bankTrnsCodeDomain": "PMNT",
+                         *           "bankTrnsCodeFamily": "ICDT",
+                         *           "paymentId": null,
+                         *           "lastChangedTimestamp": null,
+                         *           "createdAt": null,
+                         *           "debtorAgentBankCode": "",
+                         *           "ultimateDebtorLine1": "",
+                         *           "ultimateDebtorLine2": "",
+                         *           "ultimateDebtorLine3": "",
+                         *           "ultimateDebtorLine4": "",
+                         *           "ultimateDebtorAccount": "",
+                         *           "statusReasonCode": "1170",
+                         *           "statusReasonDescription": "Rejected as the beneficiary cannot receive these funds",
+                         *           "bankTrnsCodeSubFamily": "RRTN",
+                         *           "ultimateBeneficiaryAccount": "",
+                         *           "additionalRemittanceInformation1": "",
+                         *           "additionalRemittanceInformation2": "",
+                         *           "additionalRemittanceInformation3": "",
+                         *           "additionalRemittanceInformation4": "",
+                         *           "additionalRemittanceInformation5": "",
+                         *           "instructedChargeBearer": "",
+                         *           "chargeBearer": "",
+                         *           "directDebitMandateId": null,
+                         *           "paymentRail": null,
+                         *           "return": null,
+                         *           "latestStatusChangedTimestamp": null,
+                         *           "processedTimestamp": null,
+                         *           "clientOrderId": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["ReconciliationReport"];
+                        /** @example P_ID_CHANNELUSER,P_TXNDATE,REPORT_DATE,CUSTOMERID,ACCOUNT,ACCOUNT_CURRENCY,DEBIT_AMOUNT,CREDIT_AMOUNT,VALUE_DATE,INSTRUCTED_AMOUNT,INSTRUCTED_AMOUNT_CURRENCY,TRANSACTION_AMOUNT,TRANSACTION_AMOUNT_CURRENCY,EXCHANGE_RATE,DEBTOR_BANK_CODE,DEBTOR_ACCOUNT,DEBTOR_LINE_1,DEBTOR_LINE_2,DEBTOR_LINE_3,DEBTOR_LINE_4,BENEFICIARY_BANK_CODE,BENEFICIARY_ACCOUNT,BENEFICIARY_LINE_1,BENEFICIARY_LINE_2,BENEFICIARY_LINE_3,BENEFICIARY_LINE_4,PAYMENT_REFERENCE_NUMBER,FILE_REFERENCE_NUMBER,USER_REFERENCE_NUMBER,PAYMENT_DETAILS_1,PAYMENT_DETAILS_2,PAYMENT_DETAILS_3,PAYMENT_DETAILS_4,CREDIT_DEBIT_INDICATOR,BANK_TRNS_CODE_DOMAIN,BANK_TRNS_CODE_FAMILY
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,LU000010000011110100,EUR,8,0,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *     someuser@bankingcircle.com,2021-12-01T00:00:00.000+00:00,31012022,999999999,DK5489000000014303,EUR,123.45,123.45,2021-12-01,8,EUR,8,EUR,1,"SXPYDKKKXXX",LU000010000011110100,"Hello Limited","Test street 1","Test town 2","GB-London 567890","SXPYDKKKXXX",DK0111000011111111,"Test creditor name","Streetname 40","DK-8000 Aarhus C Denmark","Address line 3","010F101010110001","7495c92b-37e9-448d-a604-360d7ecc7c4b","99999999PHX","DE iban DK debit",,,,DBIT,PMNT,ICDT
+                         *      */
                         "application/csv": string;
                     };
                 };
@@ -1132,7 +1713,33 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "rejections": [
+                         *         {
+                         *           "pIdChanneluser": "someuser@bankingcircle.com",
+                         *           "pTxndate": "2021-12-30T00:00:00+00:00",
+                         *           "reportDate": "2022-01-27T00:00:00+00:00",
+                         *           "customerId": "999999999",
+                         *           "account": "LU110000000000010111",
+                         *           "accountCurrency": "EUR",
+                         *           "valueDate": "2022-02-12T00:00:00+00:00",
+                         *           "paymentAmount": 200,
+                         *           "paymentCurrency": "EUR",
+                         *           "transferCurrency": "EUR",
+                         *           "destinationIban": "BE10001001111111",
+                         *           "paymentReferenceNumber": "333333333PHX",
+                         *           "userReferenceNumber": "test",
+                         *           "fileReferenceNumber": "",
+                         *           "sourceType": "Single payment",
+                         *           "status": "Received",
+                         *           "statusReason": ""
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["RejectionReport"];
+                        /** @example P_ID_CHANNELUSER,P_TXNDATE,REPORT_DATE,CUSTOMER_ID,ACCOUNT,ACCOUNT_CURRENCY,VALUE_DATE,PAYMENT_AMOUNT,PAYMENT_CURRENCY,TRANSFER_CURRENCY,DESTINATION_IBAN,PAYMENT_REFERENCE_NUMBER,USER_REFERENCE_NUMBER,FILE_REFERENCE_NUMBER,SOURCE_TYPE,STATUS,STATUS_REASON
+                         *     someuser@bankingcircle.com,2021-12-30T00:00:00.000+00:00,27012022,999999999,LU110000000000010111,EUR,12022022,200.00,EUR,EUR,BE10001001111111,333333333PHX,"test",,"Single payment","Received",
+                         *      */
                         "application/csv": string;
                     };
                 };
@@ -1142,7 +1749,33 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "transactionDate": [
+                         *           "A value for the 'TransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["RejectionReportError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "transactionDate": [
+                         *           "A value for the 'TransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/csv": components["schemas"]["RejectionReportError400Details"];
                     };
                 };
@@ -1150,414 +1783,6 @@ export interface paths {
         };
         put?: never;
         post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Request report
-         * @description <p>Only data from current and previous year is available online. Please contact Client Services to access older data.</p>
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody?: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["RequestForReport"];
-                    "application/json": components["schemas"]["RequestForReport"];
-                    "text/json": components["schemas"]["RequestForReport"];
-                    "application/*+json": components["schemas"]["RequestForReport"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests/account-activity-report": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Account activity report */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["AccountActivityReportRequestInput"];
-                    "application/json": components["schemas"]["AccountActivityReportRequestInput"];
-                    "text/json": components["schemas"]["AccountActivityReportRequestInput"];
-                    "application/*+json": components["schemas"]["AccountActivityReportRequestInput"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests/account-balance-report": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Account balance report */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["AccountBalanceReportRequestInput"];
-                    "application/json": components["schemas"]["AccountBalanceReportRequestInput"];
-                    "text/json": components["schemas"]["AccountBalanceReportRequestInput"];
-                    "application/*+json": components["schemas"]["AccountBalanceReportRequestInput"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests/bank-statement-report": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Bank statement report */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["BankStatementReportRequestInput"];
-                    "application/json": components["schemas"]["BankStatementReportRequestInput"];
-                    "text/json": components["schemas"]["BankStatementReportRequestInput"];
-                    "application/*+json": components["schemas"]["BankStatementReportRequestInput"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests/bank-to-customer-report": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Bank to customer report */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "application/json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "text/json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "application/*+json": components["schemas"]["BankToCustomerReportRequestInput"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
         delete?: never;
         options?: never;
         head?: never;
@@ -1669,87 +1894,6 @@ export interface paths {
                     "application/json": components["schemas"]["ReconciliationReportRequestInput"];
                     "text/json": components["schemas"]["ReconciliationReportRequestInput"];
                     "application/*+json": components["schemas"]["ReconciliationReportRequestInput"];
-                };
-            };
-            responses: {
-                /** @description Accepted
-                 *     Returned when the request is found and report generation is in progress. See details in headers */
-                202: {
-                    headers: {
-                        /** @description Indicates where to request status (path) */
-                        Location?: string;
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-                /** @description Bad request
-                 *     Invalid request parameter or header */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["ReportRequestError400Details"];
-                        "application/json": components["schemas"]["ReportRequestError400Details"];
-                        "text/json": components["schemas"]["ReportRequestError400Details"];
-                    };
-                };
-                /** @description Forbidden
-                 *     Authorization error */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-                /** @description Not Found
-                 *     ReportRequest id not found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "text/plain": components["schemas"]["NoResponse"];
-                        "application/json": components["schemas"]["NoResponse"];
-                        "text/json": components["schemas"]["NoResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/reports/requests/rejection-report": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Rejection report */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            /** @description Contains parameters for the requested report */
-            requestBody: {
-                content: {
-                    "application/json-patch+json": components["schemas"]["RejectionReportRequestInput"];
-                    "application/json": components["schemas"]["RejectionReportRequestInput"];
-                    "text/json": components["schemas"]["RejectionReportRequestInput"];
-                    "application/*+json": components["schemas"]["RejectionReportRequestInput"];
                 };
             };
             responses: {
@@ -1945,8 +2089,101 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "text/plain": components["schemas"]["RequestedReportPagedResponse"];
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["RequestedReportPagedResponse"];
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "text/json": components["schemas"]["RequestedReportPagedResponse"];
                     };
                 };
@@ -1957,8 +2194,56 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "pageNumber": [
+                         *           "The field PageNumber must be between 1 and 2147483647."
+                         *         ],
+                         *         "pageSize": [
+                         *           "The field PageSize must be between 1 and 5000."
+                         *         ]
+                         *       }
+                         *     } */
                         "text/plain": components["schemas"]["PagedRequestedReportsError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "pageNumber": [
+                         *           "The field PageNumber must be between 1 and 2147483647."
+                         *         ],
+                         *         "pageSize": [
+                         *           "The field PageSize must be between 1 and 5000."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["PagedRequestedReportsError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "pageNumber": [
+                         *           "The field PageNumber must be between 1 and 2147483647."
+                         *         ],
+                         *         "pageSize": [
+                         *           "The field PageSize must be between 1 and 5000."
+                         *         ]
+                         *       }
+                         *     } */
                         "text/json": components["schemas"]["PagedRequestedReportsError400Details"];
                     };
                 };
@@ -2011,10 +2296,10 @@ export interface paths {
             /** @description Contains parameters for the requested report */
             requestBody?: {
                 content: {
-                    "application/json-patch+json": components["schemas"]["RequestForReport"];
-                    "application/json": components["schemas"]["RequestForReport"];
-                    "text/json": components["schemas"]["RequestForReport"];
-                    "application/*+json": components["schemas"]["RequestForReport"];
+                    "application/json-patch+json": components["schemas"]["GenericReportRequestInputV2"];
+                    "application/json": components["schemas"]["GenericReportRequestInputV2"];
+                    "text/json": components["schemas"]["GenericReportRequestInputV2"];
+                    "application/*+json": components["schemas"]["GenericReportRequestInputV2"];
                 };
             };
             responses: {
@@ -2697,8 +2982,101 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "text/plain": components["schemas"]["RequestedReportPagedResponse"];
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["RequestedReportPagedResponse"];
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "21d81a3c-042e-4b5d-bba4-febbf6cfa959",
+                         *           "name": "Recon Report #100523",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "pending",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-10T05:16:00+00:00"
+                         *         },
+                         *         {
+                         *           "id": "dd717ebb-500d-4884-bdc2-9586198464e9",
+                         *           "name": "Recon Report #100522",
+                         *           "reportType": "reconciliation-report",
+                         *           "reportFormatType": "json",
+                         *           "status": "success",
+                         *           "source": "schedule",
+                         *           "scheduleId": "c9e7e18e-913d-4e58-b8b9-ed4eebd90f29",
+                         *           "requestId": null,
+                         *           "generationDate": "2023-05-09T05:16:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 25,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
                         "text/json": components["schemas"]["RequestedReportPagedResponse"];
                     };
                 };
@@ -2730,7 +3108,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/v3/reports/requests/bank-to-customer-report": {
+    "/api/v3/reports/requests/bank-statement-report": {
         parameters: {
             query?: never;
             header?: never;
@@ -2739,7 +3117,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Bank to customer report */
+        /** Bank statement report */
         post: {
             parameters: {
                 query?: never;
@@ -2750,10 +3128,10 @@ export interface paths {
             /** @description Contains parameters for the requested report */
             requestBody: {
                 content: {
-                    "application/json-patch+json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "application/json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "text/json": components["schemas"]["BankToCustomerReportRequestInput"];
-                    "application/*+json": components["schemas"]["BankToCustomerReportRequestInput"];
+                    "application/json-patch+json": components["schemas"]["BankStatementReportRequestInputV2"];
+                    "application/json": components["schemas"]["BankStatementReportRequestInputV2"];
+                    "text/json": components["schemas"]["BankStatementReportRequestInputV2"];
+                    "application/*+json": components["schemas"]["BankStatementReportRequestInputV2"];
                 };
             };
             responses: {
@@ -2774,7 +3152,7 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["BankToCustomerBadRequestResponse"];
+                        "application/json": components["schemas"]["BankStatementBadRequestResponseV3"];
                     };
                 };
                 /** @description Forbidden
@@ -2848,7 +3226,21 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example <BankToCustomerEndOfDayReportError400Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /> */
                         "application/xml": components["schemas"]["BankToCustomerEndOfDayReportError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "transactionDate": [
+                         *           "A value for the 'TransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "text/plain": components["schemas"]["BankToCustomerEndOfDayReportError400Details"];
                     };
                 };
@@ -2935,7 +3327,21 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example <BankToCustomerEndOfDayReportError400Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /> */
                         "application/xml": components["schemas"]["BankToCustomerEndOfDayReportError400Details"];
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "extensions": {
+                         *         "traceId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13"
+                         *       },
+                         *       "errors": {
+                         *         "transactionDate": [
+                         *           "A value for the 'TransactionDate' parameter or property was not provided."
+                         *         ]
+                         *       }
+                         *     } */
                         "text/plain": components["schemas"]["BankToCustomerEndOfDayReportError400Details"];
                     };
                 };
@@ -3041,41 +3447,6 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        Account: {
-            /**
-             * Format: uuid
-             * @description Account (technical) identifier
-             */
-            id?: string;
-            /** @description Account number */
-            accountNumber?: string | null;
-            /** @description Account IBAN */
-            accountIban?: string | null;
-            /** @description Account Currency */
-            currency?: string | null;
-            /** @description Account Description */
-            accountDescription?: string | null;
-            /**
-             * Format: date
-             * @description Date representation
-             *
-             *     Format: ISO 8601 | YYYY-MM-DD
-             *
-             *     Example: 2001-01-28
-             */
-            openingDate?: string | null;
-            /** @description Account BranchCode */
-            branchCode?: string | null;
-            /**
-             * Format: uuid
-             * @description Identifier (technical) of the Company owning the Account
-             */
-            companyId?: string;
-            /** @description Company Number of the Company owning the Account */
-            companyNumber?: string | null;
-            /** @description Name of the Company owning the Account */
-            companyName?: string | null;
-        };
         AccountActivityBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
         };
@@ -3219,18 +3590,18 @@ export interface components {
             reportVersion?: components["schemas"]["ReportVersion"];
         };
         AccountBalance: {
-            account?: string | null;
+            account: string | null;
             /** Format: double */
-            balance?: number;
+            balance: number;
             /** @description Currency representation
              *
              *     Format: Alpha 3-5 character ISO 20022
              *
              *     Example: EUR */
-            currency?: string | null;
-            channelUserId?: string | null;
+            currency: string | null;
+            channelUserId: string | null;
             /** Format: date-time */
-            transactionDate?: string;
+            transactionDate: string;
             /**
              * Format: date
              * @description Date representation
@@ -3239,10 +3610,10 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            reportDate?: string | null;
-            customerId?: string | null;
+            reportDate: string | null;
+            customerId: string | null;
             /** Format: double */
-            availableBalance?: number | null;
+            availableBalance: number | null;
         };
         AccountBalanceBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
@@ -3250,8 +3621,6 @@ export interface components {
         AccountBalanceReport: {
             accountBalances?: components["schemas"]["AccountBalance"][] | null;
         };
-        /** @description Account Balance report returns the balances of all your bank accounts at the exact time report is requested. */
-        AccountBalanceReportRequest: Record<string, never>;
         /** @description Account Balance report returns the balances of all your bank accounts at the exact time report is requested. */
         AccountBalanceReportRequestInput: {
             /**
@@ -3348,39 +3717,8 @@ export interface components {
         BankStatementBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
         };
-        /** @description Bank Statement will return information on all processed payments in one of your bank accounts and their impact on the balance for a given value date. */
-        BankStatementReportRequest: {
-            /**
-             * Format: uuid
-             * @description Id of the account on which activities have been booked
-             *
-             *     Criteria: Exact match on the Id of the account
-             *
-             * @example 78343563-F427-4F4F-09E1-2863145BE9AD
-             */
-            accountId?: string;
-            /**
-             * Format: date-time
-             * @description Minimum value date
-             *
-             *     FromValueDate and ToValueDate form a date range
-             *
-             *     Format: ISO 8601 | YYYY-MM-DD
-             *
-             * @example 2021-11-01
-             */
-            fromValueDate?: string;
-            /**
-             * Format: date-time
-             * @description Maximum value date
-             *
-             *     FromValueDate and ToValueDate form a date range
-             *
-             *     Format: ISO 8601 | YYYY-MM-DD
-             *
-             * @example 2021-11-02
-             */
-            toValueDate?: string;
+        BankStatementBadRequestResponseV3: {
+            errors?: components["schemas"]["ISwaggerUseError"][] | null;
         };
         /** @description Bank Statement will return information on all processed payments in one of your bank accounts and their impact
          *     on the balance for a given value date. */
@@ -3431,6 +3769,55 @@ export interface components {
             name?: string | null;
             reportVersion?: components["schemas"]["ReportVersion"];
         };
+        /** @description Bank Statement will return information on all processed payments in one of your bank accounts and their impact
+         *     on the balance for a given value date. */
+        BankStatementReportRequestInputV2: {
+            /**
+             * @description Format type the report should be generated as
+             *
+             *     Available options:
+             *     * pdf
+             * @example pdf
+             */
+            reportFormatType: string;
+            /**
+             * Format: uuid
+             * @description Id of the account on which activities have been booked
+             *
+             *     Criteria: Exact match on the Id of the account
+             *
+             * @example 78343563-F427-4F4F-09E1-2863145BE9AD
+             */
+            accountId: string;
+            /**
+             * Format: date-time
+             * @description Minimum transaction date
+             *
+             *     FromDate and ToDate form a date range
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             *
+             * @example 2021-11-01
+             */
+            fromDate: string;
+            /**
+             * Format: date-time
+             * @description Maximum transaction date
+             *
+             *     FromDate and ToDate form a date range
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             *
+             * @example 2021-11-02
+             */
+            toDate: string;
+            reportVersion?: components["schemas"]["ReportVersion"];
+            /**
+             * @description Optional field for custom information
+             * @example My custom report name
+             */
+            name?: string | null;
+        };
         BankToCustomerBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
         };
@@ -3445,28 +3832,6 @@ export interface components {
             readonly errors?: {
                 [key: string]: string[];
             } | null;
-        };
-        /** @description Bank to customer report is an EOD report in CAMT053 format. It returns all processed payments on all your bank accounts at a given EOD */
-        BankToCustomerReportRequest: {
-            /**
-             * Format: date-time
-             * @description The date for which the report will be generated.
-             *
-             *     Format : ISO 8601 | YYYY-MM-DD
-             *
-             * @example 2020-11-01
-             */
-            transactionDate?: string;
-            /**
-             * @description If any account ids is specified the report will exclusively include data only for those accounts.
-             *
-             *     Format : GUID
-             * @example [
-             *       "0a0ed7aa-c87b-4ea5-844b-9714c1cf8952",
-             *       "cf2f1c1d-7df1-451d-b771-4daf288abeb0"
-             *     ]
-             */
-            accountIds?: string[] | null;
         };
         /** @description Bank to customer report is an EOD report in CAMT053 format. It returns all processed payments on all your
          *     bank accounts at a given EOD */
@@ -3603,31 +3968,6 @@ export interface components {
         };
         CompanyAccountBalanceBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
-        };
-        CompanyAccountBalanceReportRequest: {
-            /**
-             * Format: uuid
-             * @description Id of the company on which the account are related to
-             *
-             *     Criteria: Exact match on the Id of the company
-             *
-             * @example 78343563-F427-4F4F-09E1-2863145BE9AD
-             */
-            companyId?: string;
-            /**
-             * Format: date-time
-             * @description Value date
-             *
-             *     Format: ISO 8601 | YYYY-MM-DD
-             *
-             * @example 2021-11-01
-             */
-            valueDate?: string;
-            /** @description Specific accountsIds of the accounts to retrieve balances for
-             *
-             *     Criteria: Exact match on the Id of the accounts for the specified company
-             *      */
-            accountIds?: string[] | null;
         };
         /** @description Company Account Balance Report contains the end-of-day balances of the company's accounts at the given value date. */
         CompanyAccountBalanceReportRequestInput: {
@@ -3859,17 +4199,6 @@ export interface components {
             pstlAdr?: components["schemas"]["PostalAddress6"];
             othr?: components["schemas"]["GenericFinancialIdentification1"];
         };
-        /** @description Formatter details */
-        FormatterDetails: {
-            /** @description The name of the Formatter */
-            name?: string | null;
-            /** @description The description */
-            description?: string | null;
-            /** @description Short name of the formatter - to be used in Url when selecting report format. Avoid special characters and space */
-            shortName?: string | null;
-            /** @description The file extension for the report */
-            fileExtension?: string | null;
-        };
         /** @enum {string} */
         FormattingFileType: "json" | "csv" | "pdf" | "mt940" | "xml";
         GenericBadRequestResponse: {
@@ -3879,6 +4208,36 @@ export interface components {
             id?: string | null;
             schmeNm?: components["schemas"]["FinancialIdentificationSchemeName1Choice"];
             issr?: string | null;
+        };
+        /** @description Body contents:
+         *     * ReportType Required
+         *     * Exactly one Report Request is Required. */
+        GenericReportRequestInputV2: {
+            /** Format: uuid */
+            userId: string;
+            /**
+             * @description Optional field for custom information
+             * @example My custom report name
+             */
+            name?: string | null;
+            /**
+             * @description Available options:
+             *     * account-activity-report
+             *     * reconciliation-report
+             * @example reconciliation-report
+             */
+            reportType: string;
+            /**
+             * @description Available options:
+             *     * json
+             *     * csv
+             *     * mt940 (Account activity report only)
+             * @example json
+             */
+            reportFormatType?: string | null;
+            reportVersion?: components["schemas"]["ReportVersion"];
+            reconciliationReportRequest?: components["schemas"]["ReconciliationReportRequest"];
+            accountActivityReportRequest?: components["schemas"]["AccountActivityReportRequest"];
         };
         GroupHeader42: {
             msgId?: string | null;
@@ -4082,7 +4441,7 @@ export interface components {
             item?: unknown;
         };
         Reconciliation: {
-            pIdChannelUser?: string | null;
+            pIdChannelUser: string | null;
             /**
              * Format: date
              * @description Date representation
@@ -4091,7 +4450,7 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            pTxnDate?: string | null;
+            pTxnDate: string | null;
             /**
              * Format: date
              * @description Date representation
@@ -4100,12 +4459,12 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            reportDate?: string | null;
-            customerId?: string | null;
-            account?: string | null;
-            accountCurrency?: string | null;
+            reportDate: string | null;
+            customerId: string | null;
+            account: string | null;
+            accountCurrency: string | null;
             /** Format: double */
-            debitAmount?: number | null;
+            debitAmount: number | null;
             /** Format: double */
             creditAmount?: number | null;
             /**
@@ -4116,16 +4475,16 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            valueDate?: string | null;
+            valueDate: string | null;
             /** Format: double */
             instructedAmount?: number | null;
             instructedAmountCurrency?: string | null;
             /** Format: double */
-            transactionAmount?: number;
-            transactionAmountCurrency?: string | null;
+            transactionAmount: number;
+            transactionAmountCurrency: string | null;
             /** Format: double */
-            exchangeRate?: number;
-            debtorBankCode?: string | null;
+            exchangeRate: number;
+            debtorBankCode: string | null;
             debtorAccount?: string | null;
             debtorLine1?: string | null;
             debtorLine2?: string | null;
@@ -4603,7 +4962,7 @@ export interface components {
             issr?: string | null;
         };
         Rejection: {
-            pIdChanneluser?: string | null;
+            pIdChanneluser: string | null;
             /**
              * Format: date
              * @description Date representation
@@ -4612,7 +4971,7 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            pTxndate?: string | null;
+            pTxndate: string | null;
             /**
              * Format: date
              * @description Date representation
@@ -4621,10 +4980,10 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            reportDate?: string | null;
-            customerId?: string | null;
-            account?: string | null;
-            accountCurrency?: string | null;
+            reportDate: string | null;
+            customerId: string | null;
+            account: string | null;
+            accountCurrency: string | null;
             /**
              * Format: date
              * @description Date representation
@@ -4633,18 +4992,18 @@ export interface components {
              *
              *     Example: 2001-01-28
              */
-            valueDate?: string | null;
+            valueDate: string | null;
             /** Format: double */
-            paymentAmount?: number;
-            paymentCurrency?: string | null;
-            transferCurrency?: string | null;
-            destinationIban?: string | null;
-            paymentReferenceNumber?: string | null;
-            userReferenceNumber?: string | null;
-            fileReferenceNumber?: string | null;
-            sourceType?: string | null;
-            status?: string | null;
-            statusReason?: string | null;
+            paymentAmount: number;
+            paymentCurrency: string | null;
+            transferCurrency: string | null;
+            destinationIban: string | null;
+            paymentReferenceNumber: string | null;
+            userReferenceNumber: string | null;
+            fileReferenceNumber: string | null;
+            sourceType: string | null;
+            status: string | null;
+            statusReason: string | null;
         };
         RejectionBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
@@ -4663,22 +5022,6 @@ export interface components {
             readonly errors?: {
                 [key: string]: string[];
             } | null;
-        };
-        /** @description Rejection report will include all rejected payments at a given transaction date, on all your accounts.
-         *     You have the option to include/exclude payments which are missing funds or are pending processing. */
-        RejectionReportRequest: {
-            /**
-             * Format: date-time
-             * @description TransactionDate
-             *
-             *     Format: ISO 8601 | YYYY-MM-DD
-             *
-             * @example 2001-11-01
-             */
-            transactionDate?: string;
-            includeReceived?: boolean;
-            includeMissingFunds?: boolean;
-            excludeBooked?: boolean;
         };
         /** @description Rejection report will include all rejected payments at a given transaction date, on all your accounts.
          *     You have the option to include/exclude payments which are missing funds or are pending processing. */
@@ -4761,40 +5104,6 @@ export interface components {
             ntryDtls?: components["schemas"]["EntryDetails1"][] | null;
             addtlNtryInf?: string | null;
         };
-        /** @enum {string} */
-        ReportErrorCode: "Unspecified" | "RequestingTooManyRows" | "RequestingDataForTooManyDays" | "InvalidAccountId" | "InvalidPropertyFilters" | "ConnectionTimeout" | "NotFoundOrNoAccess" | "ReportNotGenerated" | "UnsupportedOperation" | "DateOutOfRange" | "InvalidBusinessDay" | "RequestingTooOldData" | "InvalidReportFormatType" | "InvalidCompanyId" | "InvalidReportType" | "MissingProperty" | "InvalidDate" | "BindingError" | "InvalidReportVersion" | "MaxFileSizeExceeded";
-        ReportErrorDto: {
-            errorCode?: components["schemas"]["ReportErrorCode"];
-            errorDescription?: string | null;
-        };
-        ReportMetaData: {
-            /**
-             * Format: uuid
-             * @description The Id
-             */
-            id?: string;
-            /**
-             * Format: date-time
-             * @description Timestamp for report
-             */
-            timeStamp?: string;
-            /** @description The report name */
-            reportName?: string | null;
-            /** @description The scheduler name */
-            schedulerName?: string | null;
-            /** @description The account number */
-            account?: string | null;
-            accountInfo?: components["schemas"]["Account"];
-            /** @description If true then report was generated successful.
-             *     If false then there was error(s) generating then report - see Errors for details */
-            readonly success?: boolean;
-            /** @description The format the file is stored in. */
-            reportFormat?: string | null;
-            /** @description The list of errors */
-            errors?: components["schemas"]["ReportErrorDto"][] | null;
-            /** @description The report name */
-            name?: string | null;
-        };
         ReportOnRequestCombinedBadRequestResponse: {
             errors?: components["schemas"]["ISwaggerUseError"][] | null;
         };
@@ -4822,45 +5131,6 @@ export interface components {
         ReportingSource1Choice: {
             item?: string | null;
             itemElementName?: components["schemas"]["ItemChoiceType2"];
-        };
-        /** @description Body contents:
-         *     * ReportType Required
-         *     * ReportFormatType Required
-         *     * Exactly one Report Request is Required. */
-        RequestForReport: {
-            /**
-             * @description Optional field for custom information
-             * @example My custom report name
-             */
-            name?: string | null;
-            /**
-             * @description Available options:
-             *     * account-activity-report
-             *     * reconciliation-report
-             *     * bank-to-customer-report
-             *     * account-balance-report
-             *     * rejection-report
-             *     * bank-statement-report
-             * @example reconciliation-report
-             */
-            reportType: string;
-            /**
-             * @description Available options:
-             *     * json
-             *     * csv,
-             *     * xml (only for bank-to-customer-report),
-             *     * pdf
-             * @example json
-             */
-            reportFormatType: string;
-            reportVersion?: components["schemas"]["ReportVersion"];
-            reconciliationReportRequest?: components["schemas"]["ReconciliationReportRequest"];
-            accountActivityReportRequest?: components["schemas"]["AccountActivityReportRequest"];
-            accountBalanceReportRequest?: components["schemas"]["AccountBalanceReportRequest"];
-            bankToCustomerReportRequest?: components["schemas"]["BankToCustomerReportRequest"];
-            rejectionReportRequest?: components["schemas"]["RejectionReportRequest"];
-            bankStatementReportRequest?: components["schemas"]["BankStatementReportRequest"];
-            companyAccountBalanceReportRequest?: components["schemas"]["CompanyAccountBalanceReportRequest"];
         };
         RequestedReport: {
             /**

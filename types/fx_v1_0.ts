@@ -37,7 +37,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -73,7 +73,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -121,7 +121,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -157,7 +157,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -170,6 +170,86 @@ export interface paths {
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/fx/rates/bulk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Request FX quotes in bulk */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description List of quote requests */
+            requestBody: {
+                content: {
+                    "application/json-patch+json": components["schemas"]["Rfq"][];
+                    "application/json": components["schemas"]["Rfq"][];
+                    "text/json": components["schemas"]["Rfq"][];
+                    "application/*+json": components["schemas"]["Rfq"][];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["FxQuoteResponse"][];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+                /** @description Forbidden */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Internal Server Error */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -199,7 +279,7 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -235,7 +315,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -264,40 +344,82 @@ export interface paths {
             parameters: {
                 query?: {
                     /**
-                     * @description Account Id<br />
-                     *     Criteria: Exact match any of<br />
-                     *      * ForeignExchange.SoldAccountId
-                     *      * ForeignExchange.BoughtAccountId
-                     * @example 720694c8-f6b3-4470-aac9-ffa779946d98
+                     * @description Number pages returned. Defaults to 1 if not specified.
+                     *
+                     *     PageNumber and PageSize details the pagination information
+                     *
+                     *     Condition: Valid page number (1 to n)
+                     * @example 10
                      */
-                    accountId?: string;
+                    pageNumber?: number;
                     /**
-                     * @description Your reference used when booking a Banking Circle FX trade<br />
+                     * @description Number of items returned per page. Defaults to 50 if not specified.
+                     *
+                     *     Condition: Required - Larger than zero
+                     * @example 50
+                     */
+                    pageSize?: number;
+                    /**
+                     * @description Account Id
+                     *
+                     *     Criteria: Exact match any of
+                     *
+                     *     * ForeignExchange.SoldAccountId
+                     *     * ForeignExchange.BoughtAccountId
+                     * @example [
+                     *       "720694c8-f6b3-4470-aac9-ffa779946d98",
+                     *       "ab89f333-908a-dc79-4be9-e368a0908c26"
+                     *     ]
+                     */
+                    accountId?: string[];
+                    /**
+                     * @description Your reference used when booking a Banking Circle FX trade
+                     *
                      *     Criteria: Exact match of ForeignExchange.ClientOrderId
                      * @example 1aac349acde611ebb8bc0242ac130003
                      */
                     clientOrderId?: string;
                     /**
-                     * @description Banking Circle's unique reference<br />
+                     * @description Banking Circle's unique reference
+                     *
                      *     Criteria: Exact match of ForeignExchange.BankingCircleRef
                      * @example 21061612550014
                      */
                     bankingCircleRef?: string;
-                    /** @description Filter based on current status of your transactions<br /> */
-                    transactionStatus?: "Open" | "Pending" | "Settled" | "Cancelled";
+                    /** @description Filter based on current status of your transactions
+                     *      */
+                    transactionStatus?: ("Open" | "Pending" | "Settled" | "Cancelled")[];
                     /**
                      * @description Filter based on the trade execution date. Show only transactions on or after this date.
-                     *     <br />
+                     *
+                     *
                      *     Format: ISO 8601 | YYYY-MM-DD
                      * @example 2001-11-01
                      */
                     tradeDate?: string;
                     /**
-                     * @description Filter based on the trade value. Show only transactions with value date on or after this date<br />
+                     * @description Filter based on the trade execution date. Show only transactions with trade date until and including this date.
+                     *
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    tradeDateTo?: string;
+                    /**
+                     * @description Filter based on the trade value. Show only transactions with value date on or after this date
+                     *
                      *     Format: ISO 8601 | YYYY-MM-DD
                      * @example 2001-11-01
                      */
                     valueDate?: string;
+                    /**
+                     * @description Filter based on the trade value. Show only transactions with value date until and including this date.
+                     *
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    valueDateTo?: string;
                     /** @description Filter based on currencies. Accepts multiple currencies using the and separator in the path. */
                     currencies?: string[];
                     /**
@@ -306,18 +428,14 @@ export interface paths {
                      */
                     amount?: number;
                     /**
-                     * @description Number pages returned. Defaults to 1 if not specified. <br />
-                     *     PageNumber and PageSize details the pagination information<br />
-                     *     Condition: Valid page number (1 to n)
-                     * @example 10
+                     * @description Optional
+                     *
+                     *     Banking Circle Customer Id in case you have multiple legal entities and want to narrow the search
+                     * @example [
+                     *       "000012356"
+                     *     ]
                      */
-                    pageNumber?: number;
-                    /**
-                     * @description Number of items returned per page. Defaults to 50 if not specified. <br />
-                     *     Condition: Required - Larger than zero
-                     * @example 50
-                     */
-                    pageSize?: number;
+                    customerId?: string[];
                 };
                 header?: never;
                 path?: never;
@@ -325,12 +443,62 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "bankingCircleRef": "21061612550014",
+                         *           "clientOrderId": "1aac349acde611ebb8bc0242ac130003",
+                         *           "tradeDate": "2021-07-08T15:12:03Z",
+                         *           "valueDate": "2021-07-08",
+                         *           "boughtAmount": 1000,
+                         *           "boughtCurrency": "EUR",
+                         *           "boughtAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32031",
+                         *             "bankAccount": "DK7789000000000114"
+                         *           },
+                         *           "soldAmount": 1150.25,
+                         *           "soldCurrency": "USD",
+                         *           "soldAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32032",
+                         *             "bankAccount": "DK9389000000000214"
+                         *           },
+                         *           "exchangeRate": 1.15025,
+                         *           "transactionStatus": "Settled",
+                         *           "customerId": ""
+                         *         },
+                         *         {
+                         *           "bankingCircleRef": "21061612550014",
+                         *           "clientOrderId": "1aac349acde611ebb8bc0242ac130003",
+                         *           "tradeDate": "2021-07-08T15:12:03Z",
+                         *           "valueDate": "2021-07-08",
+                         *           "boughtAmount": 1000,
+                         *           "boughtCurrency": "EUR",
+                         *           "boughtAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32031",
+                         *             "bankAccount": "DK7789000000000114"
+                         *           },
+                         *           "soldAmount": 1150.25,
+                         *           "soldCurrency": "USD",
+                         *           "soldAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32032",
+                         *             "bankAccount": "DK9389000000000214"
+                         *           },
+                         *           "exchangeRate": 1.15025,
+                         *           "transactionStatus": "Settled",
+                         *           "customerId": ""
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["FxTransactionPagedResponse"];
                     };
                 };
@@ -361,7 +529,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -373,7 +541,117 @@ export interface paths {
             };
         };
         put?: never;
-        post?: never;
+        /** Post FX transactions */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["FxFilter"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "bankingCircleRef": "21061612550014",
+                         *           "clientOrderId": "1aac349acde611ebb8bc0242ac130003",
+                         *           "tradeDate": "2021-07-08T15:12:03Z",
+                         *           "valueDate": "2021-07-08",
+                         *           "boughtAmount": 1000,
+                         *           "boughtCurrency": "EUR",
+                         *           "boughtAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32031",
+                         *             "bankAccount": "DK7789000000000114"
+                         *           },
+                         *           "soldAmount": 1150.25,
+                         *           "soldCurrency": "USD",
+                         *           "soldAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32032",
+                         *             "bankAccount": "DK9389000000000214"
+                         *           },
+                         *           "exchangeRate": 1.15025,
+                         *           "transactionStatus": "Settled",
+                         *           "customerId": ""
+                         *         },
+                         *         {
+                         *           "bankingCircleRef": "21061612550014",
+                         *           "clientOrderId": "1aac349acde611ebb8bc0242ac130003",
+                         *           "tradeDate": "2021-07-08T15:12:03Z",
+                         *           "valueDate": "2021-07-08",
+                         *           "boughtAmount": 1000,
+                         *           "boughtCurrency": "EUR",
+                         *           "boughtAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32031",
+                         *             "bankAccount": "DK7789000000000114"
+                         *           },
+                         *           "soldAmount": 1150.25,
+                         *           "soldCurrency": "USD",
+                         *           "soldAccount": {
+                         *             "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32032",
+                         *             "bankAccount": "DK9389000000000214"
+                         *           },
+                         *           "exchangeRate": 1.15025,
+                         *           "transactionStatus": "Settled",
+                         *           "customerId": ""
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
+                        "application/json": components["schemas"]["FxTransactionPagedResponse"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+                /** @description Forbidden */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Internal Server Error */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -400,12 +678,33 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "bankingCircleRef": "21061612550014",
+                         *       "clientOrderId": "1aac349acde611ebb8bc0242ac130003",
+                         *       "tradeDate": "2021-07-08T15:12:03Z",
+                         *       "valueDate": "2021-07-08",
+                         *       "boughtAmount": 1000,
+                         *       "boughtCurrency": "EUR",
+                         *       "boughtAccount": {
+                         *         "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32031",
+                         *         "bankAccount": "DK7789000000000114"
+                         *       },
+                         *       "soldAmount": 1150.25,
+                         *       "soldCurrency": "USD",
+                         *       "soldAccount": {
+                         *         "accountId": "2c054dcd-66bd-e5c2-b335-bff4ffe32032",
+                         *         "bankAccount": "DK9389000000000214"
+                         *       },
+                         *       "exchangeRate": 1.15025,
+                         *       "transactionStatus": "Settled",
+                         *       "customerId": ""
+                         *     } */
                         "application/json": components["schemas"]["FxTransaction"];
                     };
                 };
@@ -436,7 +735,81 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
+                500: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/fx/exposure/customer/{customer-id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get FX exposure for given client with trading line and/or collateral account */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    "customer-id": string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Exposure"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ValidationException"];
+                    };
+                };
+                /** @description Forbidden */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -482,7 +855,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -518,7 +891,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -548,8 +921,34 @@ export interface paths {
         get: {
             parameters: {
                 query?: {
-                    /** @description (Optional) Banking Circle Customer Id when multiple legal entities available */
+                    /** @description Banking Circle Customer Id when multiple legal entities available */
                     customerId?: string;
+                    /** @description Currencies to narrow down the search
+                     *
+                     *     Example:
+                     *
+                     *     ?currencies=EUR,USD,GBP
+                     *
+                     *     or
+                     *
+                     *     ?currencies=EUR&currencies=USD&currencies=GBP */
+                    currencies?: string[];
+                    /**
+                     * @description Number pages returned. Defaults to 1 if not specified.
+                     *
+                     *     PageNumber and PageSize details the pagination information
+                     *
+                     *     Condition: Valid page number (1 to n)
+                     * @example 10
+                     */
+                    pageNumber?: number;
+                    /**
+                     * @description Number of items returned per page. Defaults to 50 if not specified.
+                     *
+                     *     Condition: Required - Larger than zero
+                     * @example 50
+                     */
+                    pageSize?: number;
                 };
                 header?: never;
                 path?: never;
@@ -557,13 +956,42 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": components["schemas"]["FxQuote"][];
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "customerId": "123",
+                         *           "requestedDuration": "P1D",
+                         *           "quoteType": "Tradable",
+                         *           "currencyPair": "EURUSD",
+                         *           "exchangeRateBid": 1.1702966,
+                         *           "exchangeRateAsk": 1.1703015,
+                         *           "quoteId": "c62cd555-2ab1-43af-be40-d623d7a4f2c9",
+                         *           "expiryTime": "2025-04-12T07:55:39.8931303+00:00"
+                         *         },
+                         *         {
+                         *           "customerId": "123",
+                         *           "requestedDuration": "PT12H",
+                         *           "quoteType": "Cancelled",
+                         *           "currencyPair": "EURUSD",
+                         *           "exchangeRateBid": 1.1702966,
+                         *           "exchangeRateAsk": 1.1703015,
+                         *           "quoteId": "c62cd555-2ab1-43af-be40-d623d7a4f2c9",
+                         *           "expiryTime": "2025-04-11T19:55:39.8931322+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 10,
+                         *         "rowCount": 2
+                         *       }
+                         *     } */
+                        "application/json": components["schemas"]["HeldFxQuotePagedResponse"];
                     };
                 };
                 /** @description Bad Request */
@@ -593,87 +1021,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ValidationException"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v2/fx/held-rates/status/{client-order-id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get status of a held rate order */
-        get: {
-            parameters: {
-                query?: {
-                    /** @description (Optional) If you populated a customerId as a part of your foreign exchange order, you should
-                     *     include it here */
-                    customerId?: string;
-                };
-                header?: never;
-                path: {
-                    /** @description Your unique reference that was used in an earlier order as the clientOrderId, e.g.
-                     *     1aac349acde611ebb8bc0242ac130003 */
-                    "client-order-id": string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Success */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["BcFxTradeStatus"];
-                    };
-                };
-                /** @description Bad Request */
-                400: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ValidationException"];
-                    };
-                };
-                /** @description Forbidden */
-                403: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ProblemDetails"];
-                    };
-                };
-                /** @description Not Found */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ProblemDetails"];
-                    };
-                };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -709,7 +1057,8 @@ export interface paths {
                      */
                     "currency-one": string;
                     /**
-                     * @description Add the second currency of a currency pair for which to retrieve settlement dates. <br />
+                     * @description Add the second currency of a currency pair for which to retrieve settlement dates.
+                     *
                      *     Must be different from the first currency
                      * @example USD
                      */
@@ -723,12 +1072,26 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example [
+                         *       {
+                         *         "tenor": "ON",
+                         *         "settlementDate": "2023-05-26"
+                         *       },
+                         *       {
+                         *         "tenor": "TN",
+                         *         "settlementDate": "2023-05-29"
+                         *       },
+                         *       {
+                         *         "tenor": "SPOT",
+                         *         "settlementDate": "2023-05-30"
+                         *       }
+                         *     ] */
                         "application/json": components["schemas"]["FxSettlementDate"][];
                     };
                 };
@@ -759,7 +1122,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -790,22 +1153,28 @@ export interface paths {
             parameters: {
                 query?: {
                     /**
-                     * @description (Optional)<br />
+                     * @description (Optional)
+                     *
                      *     Retrieve the settlement accounts for a specified customer id
                      *     in cases where you have multiple legal entities at Banking Circle .
                      * @example 000012345
                      */
                     CustomerId?: string;
                     /**
-                     * @description (Optional) <br />
-                     *     Filter the settlement accounts by currency. <br />
+                     * @description (Optional)
+                     *
+                     *     Filter the settlement accounts by currency.
+                     *
                      *     Must match ISO 20222.
                      * @example EUR
                      */
                     Currency?: string;
-                    /** @description (Optional) <br />
-                     *     Default : false <br />
-                     *     Set to true to return only main (default) settlement accounts.<br />
+                    /** @description (Optional)
+                     *
+                     *     Default : false
+                     *
+                     *     Set to true to return only main (default) settlement accounts.
+                     *
                      *     Set to false to return all FX settlement accounts, for example if you have multiple EUR or GBP accounts with us. */
                     OnlyDefaultAccounts?: boolean;
                 };
@@ -815,16 +1184,47 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example [
+                         *       {
+                         *         "accountId": "5fefb9c7-dd52-bb8b-3326-d79af1c7728a",
+                         *         "customerId": "000012356",
+                         *         "currency": "EUR",
+                         *         "isDefaultAccount": true,
+                         *         "side": "Buy"
+                         *       },
+                         *       {
+                         *         "accountId": "5fefb9c7-dd52-bb8b-3326-d79af1c7728a",
+                         *         "customerId": "000012356",
+                         *         "currency": "EUR",
+                         *         "isDefaultAccount": true,
+                         *         "side": "Sell"
+                         *       },
+                         *       {
+                         *         "accountId": "5b5c57af-a516-61a1-06d3-08ee43cfa4e7",
+                         *         "customerId": "000012356",
+                         *         "currency": "GBP",
+                         *         "isDefaultAccount": true,
+                         *         "side": "Buy"
+                         *       },
+                         *       {
+                         *         "accountId": "ae3c64b4-e67b-476a-ccee-75ab1c90c67d",
+                         *         "customerId": "000012356",
+                         *         "currency": "GBP",
+                         *         "isDefaultAccount": false,
+                         *         "side": "Buy"
+                         *       }
+                         *     ] */
                         "application/json": components["schemas"]["SettlementAccount"][];
                     };
                 };
-                /** @description Bad request.<br />Request is not correctly formulated. Goes for both Header, Query and Body.
+                /** @description Bad request.
+                 *     Request is not correctly formulated. Goes for both Header, Query and Body.
                  *                 Verify the error description and properties. */
                 400: {
                     headers: {
@@ -873,6 +1273,203 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/fx/reports/transactions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get FX transactions */
+        get: {
+            parameters: {
+                query?: {
+                    /**
+                     * @description Account Id
+                     *
+                     *     Criteria: Exact match any of
+                     *
+                     *     * ForeignExchange.SoldAccountId
+                     *     * ForeignExchange.BoughtAccountId
+                     * @example [
+                     *       "720694c8-f6b3-4470-aac9-ffa779946d98",
+                     *       "ab89f333-908a-dc79-4be9-e368a0908c26"
+                     *     ]
+                     */
+                    accountId?: string[];
+                    /**
+                     * @description Your reference used when booking a Banking Circle FX trade
+                     *
+                     *     Criteria: Exact match of ForeignExchange.ClientOrderId
+                     * @example 1aac349acde611ebb8bc0242ac130003
+                     */
+                    clientOrderId?: string;
+                    /**
+                     * @description Banking Circle's unique reference
+                     *
+                     *     Criteria: Exact match of ForeignExchange.BankingCircleRef
+                     * @example 21061612550014
+                     */
+                    bankingCircleRef?: string;
+                    /** @description Filter based on current status of your transactions
+                     *      */
+                    transactionStatus?: ("Open" | "Pending" | "Settled" | "Cancelled")[];
+                    /**
+                     * @description Filter based on the trade execution date. Show only transactions on or after this date.
+                     *
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    tradeDate?: string;
+                    /**
+                     * @description Filter based on the trade execution date. Show only transactions with trade date until and including this date.
+                     *
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    tradeDateTo?: string;
+                    /**
+                     * @description Filter based on the trade value. Show only transactions with value date on or after this date
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    valueDate?: string;
+                    /**
+                     * @description Filter based on the trade value. Show only transactions with value date until and including this date.
+                     *
+                     *
+                     *     Format: ISO 8601 | YYYY-MM-DD
+                     * @example 2001-11-01
+                     */
+                    valueDateTo?: string;
+                    /** @description Filter based on currencies. Accepts multiple currencies using the and separator in the path. */
+                    currencies?: string[];
+                    /**
+                     * @description Filter based on the amount. Show only amounts equal or exceeding this value.
+                     * @example 10000
+                     */
+                    amount?: number;
+                    /**
+                     * @description Optional
+                     *
+                     *     Banking Circle Customer Id in case you have multiple legal entities and want to narrow the search
+                     * @example [
+                     *       "000012356"
+                     *     ]
+                     */
+                    customerId?: string[];
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example Swashbuckle.AspNetCore.Filters.MvcOutputFormatter+FormatterNotFoundException: OutputFormatter not found for 'text/csv' for example of BankingCircle.Fx.Api.Data.CsvFxTransaction. */
+                        "text/csv": components["schemas"]["CsvFxTransaction"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Forbidden */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        /** Post FX transactions */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json-patch+json": components["schemas"]["FxFilterBase"];
+                    "application/json": components["schemas"]["FxFilterBase"];
+                    "text/json": components["schemas"]["FxFilterBase"];
+                    "application/*+json": components["schemas"]["FxFilterBase"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example Swashbuckle.AspNetCore.Filters.MvcOutputFormatter+FormatterNotFoundException: OutputFormatter not found for 'text/csv' for example of BankingCircle.Fx.Api.Data.CsvFxTransaction. */
+                        "text/csv": components["schemas"]["CsvFxTransaction"];
+                    };
+                };
+                /** @description Bad Request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Forbidden */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+                /** @description Not Found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/csv": components["schemas"]["ProblemDetails"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/fx/rates/payments/{debit-currency}/{credit-currency}": {
         parameters: {
             query?: never;
@@ -904,7 +1501,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -940,7 +1537,7 @@ export interface paths {
                         "application/json": components["schemas"]["ProblemDetails"];
                     };
                 };
-                /** @description Server Error */
+                /** @description Internal Server Error */
                 500: {
                     headers: {
                         [name: string]: unknown;
@@ -978,7 +1575,8 @@ export interface components {
          *     available */
         BcFxOrder: {
             /**
-             * @description Unique reference on your side identifying this order.<br />
+             * @description Unique reference on your side identifying this order.
+             *
              *     Banking Circle suggests using UUID without dashes as only alphanumeric characters are allowed.
              * @example 1aac349acde611ebb8bc0242ac130003
              */
@@ -1000,9 +1598,11 @@ export interface components {
              */
             sellCurrency: string;
             /**
-             * @description Specify whether the order amount refers to the currency being bought or currency being sold. <br />
+             * @description Specify whether the order amount refers to the currency being bought or currency being sold.
+             *
              *     If you specify buyCurrency as EUR and sellCurrency as USD, and you would like to buy 1000 EUR,
-             *     then you should specify amountCurrency as EUR and amount as 1000.<br />
+             *     then you should specify amountCurrency as EUR and amount as 1000.
+             *
              *     If you would like to sell 1000 USD, you should specify amountCurrency as USD and amount as 1000
              * @example EUR
              */
@@ -1016,15 +1616,19 @@ export interface components {
             amount: number;
             /**
              * Format: uuid
-             * @description (Optional) <br />
-             *     Only required in request-for-quote flow. For Market Orders this field can be omitted<br />
-             *     Unique identifier of the quote, previously received through "fx-rates" endpoint. <br />
+             * @description (Optional)
+             *
+             *     Only required in request-for-quote flow. For Market Orders this field can be omitted
+             *
+             *     Unique identifier of the quote, previously received through "fx-rates" endpoint.
+             *
              *     Your order will be rejected if the quoteId is invalid or has expired.
              * @example ccecb8aa-32d7-4c38-8187-ade667bb1b75
              */
             quoteId?: string | null;
             /**
-             * @description (Optional/Conditionally Required) <br />
+             * @description (Optional/Conditionally Required)
+             *
              *     Required when executing a Market Order. In request-for-quote flow, the Tenor is derived
              *     from the requested quote. You may specify ON for value date today, TN for value date tomorrow, or
              *     SPOT for value date T+2
@@ -1033,21 +1637,26 @@ export interface components {
              */
             tenor?: "ON" | "TN" | "SPOT" | null;
             /**
-             * @description (Optional) <br />
-             *     Specify the buy account by account technical identifier, account number or IBAN.<br />
+             * @description (Optional)
+             *
+             *     Specify the buy account by account technical identifier, account number or IBAN.
+             *
              *     If no input, default(main) account is selected.
              * @example DK9389000000000214
              */
             buyAccount?: string | null;
             /**
-             * @description (Optional) <br />
-             *     Specify the sell account by account technical identifier, account number or IBAN. <br />
+             * @description (Optional)
+             *
+             *     Specify the sell account by account technical identifier, account number or IBAN.
+             *
              *     If no input, default(main) account is selected.
              * @example DK7789000000000114
              */
             sellAccount?: string | null;
             /**
-             * @description (Optional) <br />
+             * @description (Optional)
+             *
              *     Freetext field if you would like to attach any additional information to this trade, for example
              *     the purpose of the trade.
              * @example Q2 Risk exposure
@@ -1125,24 +1734,369 @@ export interface components {
              */
             rejectReason?: string | null;
         };
-        /** @description Banking Circle trade status */
-        BcFxTradeStatus: {
+        /** @description Your current FX exposure in this currency */
+        CcyExposure: {
             /**
-             * @description Echoed client reference from original order
+             * @description The currency in which amount and weighted impact is represented
+             * @example GBP
+             */
+            currency: string;
+            /**
+             * Format: double
+             * @description The exposure amount in the given currency
+             * @example 128000
+             */
+            amount: number;
+            /**
+             * Format: double
+             * @description The risk weight for the given currency expressed as a percentage.
+             *     The risk weight indicates the impact your current position in this currency has on your overall exposure.
+             * @example 0.03
+             */
+            riskWeight: number;
+            /**
+             * Format: double
+             * @description The weighted impact in the given currency on your overall FX exposure
+             * @example 3840
+             */
+            weightedImpact: number;
+            /**
+             * Format: double
+             * @description Euro equivalent impact to your overall FX exposure for the given currency
+             * @example 4500
+             */
+            eurImpact: number;
+        };
+        /**
+         * CsvFxTransaction
+         * @description A flattened version of FxTransaction for CSV purposes
+         */
+        CsvFxTransaction: {
+            /**
+             * @description Banking Circle's unique reference to the FX trade.
+             *
+             *     Matches with bankingCircleRef from an FX trade executed via our UI or API.
+             *
+             *     For trades executed on our RTFX platform, a unique technical identifier is used instead.
+             * @example 21061612550014
+             */
+            bankingCircleRef: string | null;
+            /**
+             * @description Client reference from the original order.
+             *
+             *     For trades executed at our RTFX platform, our settlement system reference is used instead
              * @example 1aac349acde611ebb8bc0242ac130003
              */
-            clientOrderId: string;
+            clientOrderId: string | null;
             /**
-             * @description The current status of the order, e.g. Filled or Pending or Rejected
-             * @example Filled
+             * @description Banking Circle Customer Id
+             * @example 000012356
+             */
+            customerId?: string | null;
+            /**
+             * Format: date-time
+             * @description Indicates when the trade was initiated
+             */
+            tradeDate: string;
+            /**
+             * Format: date
+             * @description The settlement date of the trade: money changes hands on this date
+             */
+            valueDate?: string | null;
+            /**
+             * Format: double
+             * @description The amount that was bought
+             * @example 1000
+             */
+            boughtAmount?: number | null;
+            /**
+             * @description The currency that was bought
+             * @example EUR
+             */
+            boughtCurrency?: string | null;
+            /**
+             * @description The bought amount was credited to this account identifier
+             * @example 2C054DCD-66BD-E5C2-B335-BFF4FFE32031
+             */
+            boughtAccountId?: string | null;
+            /**
+             * @description The bought amount was credited to this bank account
+             * @example DK7789000000000114
+             */
+            boughtBankAccount?: string | null;
+            /**
+             * Format: double
+             * @description The amount that was sold
+             * @example 1150.25
+             */
+            soldAmount?: number | null;
+            /**
+             * @description The currency that was sold
+             * @example USD
+             */
+            soldCurrency?: string | null;
+            /**
+             * @description The sold amount was debited from this account id
+             * @example 2C054DCD-66BD-E5C2-B335-BFF4FFE32032
+             */
+            soldAccountId?: string | null;
+            /**
+             * @description The sold amount was debited from this bank account
+             * @example DK9389000000000214
+             */
+            soldBankAccount?: string | null;
+            /**
+             * Format: double
+             * @description Exchange rate used in the conversion
+             * @example 1.15025
+             */
+            exchangeRate?: number | null;
+            /**
+             * @description The current status of the transaction.
+             * @example Settled
              * @enum {string}
              */
-            orderStatus: "Filled" | "Rejected" | "Pending";
+            status?: "Open" | "Pending" | "Settled" | "Cancelled";
             /**
-             * @description In case of a rejection, a human-readable reason for the rejection
-             * @example 'amountCurrency' DKK is not valid.
+             * @description (Optional)
+             *
+             *     Client note for internal purposes from the original order, if one was provided
+             * @example January risk exposure hedge
              */
-            rejectReason?: string | null;
+            note?: string | null;
+        };
+        /** @description Overview of your FX exposure per legal entity, grouped per currency */
+        Exposure: {
+            /**
+             * @description FX exposure is related to your legal entity with this customer id
+             * @example 000012366
+             */
+            customerId: string;
+            /**
+             * Format: double
+             * @description Trading line in EUR for this legal entity.
+             *     Indicates the EUR-equivalent maximum overall position across all currencies that you can have open at any given time.
+             * @example 100000
+             */
+            tradingLineEur: number;
+            /**
+             * Format: double
+             * @description Collateral amount in EUR for this legal entity.
+             *     Indicates the amount of collateral in EUR you have posted across all your collateral accounts.
+             * @example 200000
+             */
+            collateralEur: number;
+            /**
+             * Format: double
+             * @description Total FX exposure limit for your legal entity in EUR (including trading line and collateral).
+             * @example 300000
+             */
+            exposureLimitEur: number;
+            /**
+             * Format: double
+             * @description Your current FX exposure for this legal entity in EUR
+             * @example 4500
+             */
+            totalExposureEur: number;
+            /**
+             * Format: double
+             * @description Your current exposure utilization for this legal entity represented in percentage terms.
+             *     1.5 indicates you have used 1.5% of your available FX exposure.
+             * @example 1.5
+             */
+            exposureUtilizationPct: number;
+            /** @description Netted FX exposure per currency, impacting overall FX exposure */
+            ccyExposures: components["schemas"]["CcyExposure"][];
+        };
+        /** @description Filter your FX Transactions */
+        FxFilter: {
+            /**
+             * Format: int32
+             * @description Number pages returned. Defaults to 1 if not specified.
+             *
+             *     PageNumber and PageSize details the pagination information
+             *
+             *     Condition: Valid page number (1 to n)
+             * @default 1
+             * @example 10
+             */
+            pageNumber: number;
+            /**
+             * Format: int32
+             * @description Number of items returned per page. Defaults to 50 if not specified.
+             *
+             *     Condition: Required - Larger than zero
+             * @default 50
+             * @example 50
+             */
+            pageSize: number;
+            /**
+             * @description Account Id
+             *
+             *     Criteria: Exact match any of
+             *
+             *     * ForeignExchange.SoldAccountId
+             *     * ForeignExchange.BoughtAccountId
+             * @example [
+             *       "720694c8-f6b3-4470-aac9-ffa779946d98",
+             *       "ab89f333-908a-dc79-4be9-e368a0908c26"
+             *     ]
+             */
+            accountId?: string[] | null;
+            /**
+             * @description Your reference used when booking a Banking Circle FX trade
+             *
+             *     Criteria: Exact match of ForeignExchange.ClientOrderId
+             * @example 1aac349acde611ebb8bc0242ac130003
+             */
+            clientOrderId?: string | null;
+            /**
+             * @description Banking Circle's unique reference
+             *
+             *     Criteria: Exact match of ForeignExchange.BankingCircleRef
+             * @example 21061612550014
+             */
+            bankingCircleRef?: string | null;
+            /** @description Filter based on current status of your transactions
+             *      */
+            transactionStatus?: ("Open" | "Pending" | "Settled" | "Cancelled")[] | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade execution date. Show only transactions on or after this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            tradeDate?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade execution date. Show only transactions with trade date until and including this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            tradeDateTo?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade value. Show only transactions with value date on or after this date
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            valueDate?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade value. Show only transactions with value date until and including this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            valueDateTo?: string | null;
+            /** @description Filter based on currencies. Accepts multiple currencies using the and separator in the path. */
+            currencies?: string[] | null;
+            /**
+             * Format: double
+             * @description Filter based on the amount. Show only amounts equal or exceeding this value.
+             * @example 10000
+             */
+            amount?: number | null;
+            /**
+             * @description Optional
+             *
+             *     Banking Circle Customer Id in case you have multiple legal entities and want to narrow the search
+             * @example [
+             *       "000012356"
+             *     ]
+             */
+            customerId?: string[] | null;
+        };
+        /** @description Filter your FX Transactions */
+        FxFilterBase: {
+            /**
+             * @description Account Id
+             *
+             *     Criteria: Exact match any of
+             *
+             *     * ForeignExchange.SoldAccountId
+             *     * ForeignExchange.BoughtAccountId
+             * @example [
+             *       "720694c8-f6b3-4470-aac9-ffa779946d98",
+             *       "ab89f333-908a-dc79-4be9-e368a0908c26"
+             *     ]
+             */
+            accountId?: string[] | null;
+            /**
+             * @description Your reference used when booking a Banking Circle FX trade
+             *
+             *     Criteria: Exact match of ForeignExchange.ClientOrderId
+             * @example 1aac349acde611ebb8bc0242ac130003
+             */
+            clientOrderId?: string | null;
+            /**
+             * @description Banking Circle's unique reference
+             *
+             *     Criteria: Exact match of ForeignExchange.BankingCircleRef
+             * @example 21061612550014
+             */
+            bankingCircleRef?: string | null;
+            /** @description Filter based on current status of your transactions
+             *      */
+            transactionStatus?: ("Open" | "Pending" | "Settled" | "Cancelled")[] | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade execution date. Show only transactions on or after this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            tradeDate?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade execution date. Show only transactions with trade date until and including this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            tradeDateTo?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade value. Show only transactions with value date on or after this date
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            valueDate?: string | null;
+            /**
+             * Format: date-time
+             * @description Filter based on the trade value. Show only transactions with value date until and including this date.
+             *
+             *
+             *     Format: ISO 8601 | YYYY-MM-DD
+             * @example 2001-11-01
+             */
+            valueDateTo?: string | null;
+            /** @description Filter based on currencies. Accepts multiple currencies using the and separator in the path. */
+            currencies?: string[] | null;
+            /**
+             * Format: double
+             * @description Filter based on the amount. Show only amounts equal or exceeding this value.
+             * @example 10000
+             */
+            amount?: number | null;
+            /**
+             * @description Optional
+             *
+             *     Banking Circle Customer Id in case you have multiple legal entities and want to narrow the search
+             * @example [
+             *       "000012356"
+             *     ]
+             */
+            customerId?: string[] | null;
         };
         /** @description Represents a Foreign Exchange (FX) quote by Banking Circle */
         FxQuote: {
@@ -1153,7 +2107,56 @@ export interface components {
              * @example Tradable
              * @enum {string}
              */
-            quoteType: "NotAvailable" | "Indicative" | "Tradable";
+            quoteType: "NotAvailable" | "Indicative" | "Tradable" | "Cancelled";
+            /**
+             * @description The currency pair of the quote. As an example, the currency pair used is EURUSD. Here, the ExchangeRate
+             *     refers to how many USD you can buy by selling 1 EUR, or how many USD you can sell to gain 1 EUR
+             *     (only present if a quote is available)
+             * @example EURUSD
+             */
+            currencyPair?: string | null;
+            /**
+             * Format: double
+             * @description Exchange rate used when selling a currency (debiting an account), up to seven decimal points in value.
+             * @example 1.1702965
+             */
+            exchangeRateBid?: number | null;
+            /**
+             * Format: double
+             * @description Exchange rate used when buying a currency (crediting an account), up to seven decimal points in value.
+             * @example 1.1703016
+             */
+            exchangeRateAsk?: number | null;
+            /**
+             * Format: uuid
+             * @description Quote Id
+             * @example ccecb8aa-32d7-4c38-8187-ade667bb1b75
+             */
+            quoteId?: string | null;
+            /**
+             * Format: date-time
+             * @description Expiry time of the quote, ISO 8601 formatted
+             * @example 2023-05-30T08:20:48.0752157+00:00
+             */
+            expiryTime?: string | null;
+        };
+        /** @description Represents a Foreign Exchange (FX) quote by Banking Circle that might include an error message */
+        FxQuoteResponse: {
+            /** @description Error message */
+            errorMessage?: string | null;
+            /**
+             * Format: uuid
+             * @description Request Id
+             */
+            requestId: string | null;
+            /**
+             * @description Indicates whether this quote is a firm (tradable) quote or an indicative one.
+             *     When requesting unsupported currencies or outside opening hours, you will receive
+             *     a quote type 'NotAvailable'
+             * @example Tradable
+             * @enum {string}
+             */
+            quoteType: "NotAvailable" | "Indicative" | "Tradable" | "Cancelled";
             /**
              * @description The currency pair of the quote. As an example, the currency pair used is EURUSD. Here, the ExchangeRate
              *     refers to how many USD you can buy by selling 1 EUR, or how many USD you can sell to gain 1 EUR
@@ -1195,7 +2198,7 @@ export interface components {
              * @example Indicative
              * @enum {string}
              */
-            quoteType: "NotAvailable" | "Indicative" | "Tradable";
+            quoteType: "NotAvailable" | "Indicative" | "Tradable" | "Cancelled";
             /**
              * @description The currency pair of the quote. As an example, the currency pair used is EURUSD. Here, the ExchangeRate
              *     refers to how many USD you can buy by selling 1 EUR, or how many USD you can sell to gain 1 EUR
@@ -1238,14 +2241,17 @@ export interface components {
         /** @description Represents a Foreign Exchange (FX) transaction between a client and Banking Circle */
         FxTransaction: {
             /**
-             * @description Banking Circle's unique reference to the FX trade. <br />
-             *     Matches with bankingCircleRef from an FX trade executed via our UI or API. <br />
+             * @description Banking Circle's unique reference to the FX trade.
+             *
+             *     Matches with bankingCircleRef from an FX trade executed via our UI or API.
+             *
              *     For trades executed on our RTFX platform, a unique technical identifier is used instead.
              * @example 21061612550014
              */
             bankingCircleRef: string;
             /**
-             * @description Client reference from the original order. <br />
+             * @description Client reference from the original order.
+             *
              *     For trades executed at our RTFX platform, our settlement system reference is used instead
              * @example 1aac349acde611ebb8bc0242ac130003
              */
@@ -1288,14 +2294,71 @@ export interface components {
              */
             transactionStatus: "Open" | "Pending" | "Settled" | "Cancelled";
             /**
-             * @description (Optional) <br />
-             *     Client note for internal purposes from the original order, if one was provided
+             * @description Client note for internal purposes from the original order, if one was provided
              * @example January risk exposure hedge
              */
             note?: string | null;
+            /**
+             * @description Banking Circle Customer Id
+             * @example 000012356
+             */
+            customerId?: string | null;
         };
         FxTransactionPagedResponse: {
             result?: components["schemas"]["FxTransaction"][] | null;
+            pageInfo?: components["schemas"]["PageInfo"];
+        };
+        /** @description Held rate quote */
+        HeldFxQuote: {
+            /** @description Customer Id that requested the quote. */
+            customerId: string;
+            /**
+             * Format: date-span
+             * @description Held rate request duration
+             */
+            requestedDuration: string;
+            /**
+             * @description Indicates whether this quote is a firm (tradable) quote or an indicative one.
+             *     When requesting unsupported currencies or outside opening hours, you will receive
+             *     a quote type 'NotAvailable'
+             * @example Tradable
+             * @enum {string}
+             */
+            quoteType: "NotAvailable" | "Indicative" | "Tradable" | "Cancelled";
+            /**
+             * @description The currency pair of the quote. As an example, the currency pair used is EURUSD. Here, the ExchangeRate
+             *     refers to how many USD you can buy by selling 1 EUR, or how many USD you can sell to gain 1 EUR
+             *     (only present if a quote is available)
+             * @example EURUSD
+             */
+            currencyPair?: string | null;
+            /**
+             * Format: double
+             * @description Exchange rate used when selling a currency (debiting an account), up to seven decimal points in value.
+             * @example 1.1702965
+             */
+            exchangeRateBid?: number | null;
+            /**
+             * Format: double
+             * @description Exchange rate used when buying a currency (crediting an account), up to seven decimal points in value.
+             * @example 1.1703016
+             */
+            exchangeRateAsk?: number | null;
+            /**
+             * Format: uuid
+             * @description Quote Id
+             * @example ccecb8aa-32d7-4c38-8187-ade667bb1b75
+             */
+            quoteId?: string | null;
+            /**
+             * Format: date-time
+             * @description Expiry time of the quote, ISO 8601 formatted
+             * @example 2023-05-30T08:20:48.0752157+00:00
+             */
+            expiryTime?: string | null;
+        };
+        HeldFxQuotePagedResponse: {
+            result?: components["schemas"]["HeldFxQuote"][] | null;
             pageInfo?: components["schemas"]["PageInfo"];
         };
         PageInfo: {
@@ -1315,6 +2378,55 @@ export interface components {
             instance?: string | null;
         } & {
             [key: string]: unknown;
+        };
+        /** @description Represents a Request for Quote (RFQ) */
+        Rfq: {
+            /**
+             * Format: uuid
+             * @description The request Id matching each quote
+             * @example f47ac10b-58cc-4372-a567-0e02b2c3d479
+             */
+            requestId: string;
+            /**
+             * @description The currency pair of the quote. As an example, the currency pair used is EURUSD. Here, the ExchangeRate
+             *     refers to how many USD you can buy by selling 1 EUR, or how many USD you can sell to gain 1 EUR
+             *     (only present if a quote is available)
+             * @example EURUSD
+             */
+            currencyPair: string;
+            /**
+             * @description Amount currency
+             * @example USD
+             */
+            amountCurrency: string;
+            /**
+             * Format: double
+             * @description Amount
+             * @example 1000000
+             */
+            amount: number;
+            /**
+             * @description Tenor
+             * @example SPOT
+             * @enum {string}
+             */
+            tenor: "ON" | "TN" | "SPOT";
+            /**
+             * @description Is the RFQ for indicative quote?
+             * @example true
+             */
+            indicative?: boolean;
+            /**
+             * Format: int32
+             * @description The time in minutes for which the quote is valid
+             * @example 2
+             */
+            validFor?: number;
+            /**
+             * @description CustomerId
+             * @example 000012356
+             */
+            customerId: string;
         };
         /** @description Represents an FX Settlement Account. A foreign exchange settlement account determines the bank account where
          *     your bought currency is credited to, or sold currency is debited from. */
@@ -1340,7 +2452,7 @@ export interface components {
         };
         ValidationException: {
             /** @enum {string} */
-            httpStatus?: "Continue" | "SwitchingProtocols" | "Processing" | "EarlyHints" | "OK" | "Created" | "Accepted" | "NonAuthoritativeInformation" | "NoContent" | "ResetContent" | "PartialContent" | "MultiStatus" | "AlreadyReported" | "IMUsed" | "Ambiguous" | "Moved" | "Redirect" | "RedirectMethod" | "NotModified" | "UseProxy" | "Unused" | "TemporaryRedirect" | "PermanentRedirect" | "BadRequest" | "Unauthorized" | "PaymentRequired" | "Forbidden" | "NotFound" | "MethodNotAllowed" | "NotAcceptable" | "ProxyAuthenticationRequired" | "RequestTimeout" | "Conflict" | "Gone" | "LengthRequired" | "PreconditionFailed" | "RequestEntityTooLarge" | "RequestUriTooLong" | "UnsupportedMediaType" | "RequestedRangeNotSatisfiable" | "ExpectationFailed" | "MisdirectedRequest" | "UnprocessableEntity" | "Locked" | "FailedDependency" | "UpgradeRequired" | "PreconditionRequired" | "TooManyRequests" | "RequestHeaderFieldsTooLarge" | "UnavailableForLegalReasons" | "InternalServerError" | "NotImplemented" | "BadGateway" | "ServiceUnavailable" | "GatewayTimeout" | "HttpVersionNotSupported" | "VariantAlsoNegotiates" | "InsufficientStorage" | "LoopDetected" | "NotExtended" | "NetworkAuthenticationRequired";
+            httpStatus?: "Continue" | "SwitchingProtocols" | "Processing" | "EarlyHints" | "OK" | "Created" | "Accepted" | "NonAuthoritativeInformation" | "NoContent" | "ResetContent" | "PartialContent" | "MultiStatus" | "AlreadyReported" | "IMUsed" | "MultipleChoices" | "MovedPermanently" | "Found" | "SeeOther" | "NotModified" | "UseProxy" | "Unused" | "RedirectKeepVerb" | "PermanentRedirect" | "BadRequest" | "Unauthorized" | "PaymentRequired" | "Forbidden" | "NotFound" | "MethodNotAllowed" | "NotAcceptable" | "ProxyAuthenticationRequired" | "RequestTimeout" | "Conflict" | "Gone" | "LengthRequired" | "PreconditionFailed" | "RequestEntityTooLarge" | "RequestUriTooLong" | "UnsupportedMediaType" | "RequestedRangeNotSatisfiable" | "ExpectationFailed" | "MisdirectedRequest" | "UnprocessableEntity" | "Locked" | "FailedDependency" | "UpgradeRequired" | "PreconditionRequired" | "TooManyRequests" | "RequestHeaderFieldsTooLarge" | "UnavailableForLegalReasons" | "InternalServerError" | "NotImplemented" | "BadGateway" | "ServiceUnavailable" | "GatewayTimeout" | "HttpVersionNotSupported" | "VariantAlsoNegotiates" | "InsufficientStorage" | "LoopDetected" | "NotExtended" | "NetworkAuthenticationRequired";
             /** Format: int32 */
             errorCode?: number | null;
             keyOrMessage?: string | null;

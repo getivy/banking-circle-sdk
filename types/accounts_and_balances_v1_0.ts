@@ -164,6 +164,45 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                         *       "accountDescription": "Description of the account",
+                         *       "accountIdentifiers": [
+                         *         {
+                         *           "account": "DK6289000049910085",
+                         *           "financialInstitution": "",
+                         *           "country": "DK"
+                         *         }
+                         *       ],
+                         *       "ibans": [
+                         *         "DK6289000049910085",
+                         *         "LU734080000049971008",
+                         *         "DE422022080000499910085"
+                         *       ],
+                         *       "status": "Active",
+                         *       "currency": "EUR",
+                         *       "openingDate": "2023-02-21T00:00:00+00:00",
+                         *       "closingDate": null,
+                         *       "ownedByCompanyId": "2920e27e-b112-4b09-8ae6-c6f4aaacd3c7",
+                         *       "ownedByCompanyName": "ACME industries Ltd",
+                         *       "ownedByCompanyNumber": null,
+                         *       "protectionType": "None",
+                         *       "balances": [
+                         *         {
+                         *           "type": "CurrentBalance",
+                         *           "currency": "EUR",
+                         *           "beginOfDayAmount": 999,
+                         *           "financialDate": "2024-02-21T00:00:00+00:00",
+                         *           "intraDayAmount": 0,
+                         *           "lastTransactionTimestamp": "2024-02-21T12:03:01.3099984+00:00"
+                         *         }
+                         *       ],
+                         *       "friendlyName": "",
+                         *       "netInterestRate": null,
+                         *       "interestCalcMethod": null,
+                         *       "overdraftRate": null,
+                         *       "overdraftRateCalcMethod": null
+                         *     } */
                         "application/json": components["schemas"]["AccountDtoResponse"];
                     };
                 };
@@ -252,6 +291,22 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "type": "CurrentBalance",
+                         *           "currency": "EUR",
+                         *           "beginOfDayAmount": 999,
+                         *           "financialDate": "2024-02-21T00:00:00+00:00",
+                         *           "intraDayAmount": 250,
+                         *           "lastTransactionTimestamp": "2024-02-11T00:00:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["AccountBalancePagedResponse"];
                     };
                 };
@@ -383,6 +438,51 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "bookingId": "69bd726c-ac25-4498-89a2-a52f8138d61f",
+                         *           "bookingReference": "010F104231850006",
+                         *           "transactionType": "Payment",
+                         *           "transactionId": "e9e647b3-1025-4434-8517-82c846848e1a",
+                         *           "transactionDebtorReference": "DEB883493",
+                         *           "accountId": "2fe0eff5-6dca-4151-931a-5a7f8e46467b",
+                         *           "account": {
+                         *             "account": "0000012345",
+                         *             "financialInstitution": "SAPYGB2LXXX",
+                         *             "country": "DE"
+                         *           },
+                         *           "vibanId": null,
+                         *           "viban": {
+                         *             "account": "",
+                         *             "financialInstitution": "",
+                         *             "country": null
+                         *           },
+                         *           "valueDate": "2024-02-22T00:00:00+00:00",
+                         *           "transactionDate": "2024-01-21T00:00:00+00:00",
+                         *           "creditDebitIndicator": "Credit",
+                         *           "amount": {
+                         *             "currency": "EUR",
+                         *             "amount": 99.19
+                         *           },
+                         *           "balance": {
+                         *             "currency": "EUR",
+                         *             "amount": 10029.29
+                         *           },
+                         *           "counterparty": "Acme inc.",
+                         *           "counterpartyAccount": {
+                         *             "account": "DK6789000000010188",
+                         *             "financialInstitution": "",
+                         *             "country": null
+                         *           },
+                         *           "details": "Remittance details"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["AccountBookingPagedResponse"];
                     };
                 };

@@ -33,6 +33,24 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "PendingProcessing",
+                         *       "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *       "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *       "account": {
+                         *         "account": "DK1234567890123456",
+                         *         "financialInstitution": null,
+                         *         "country": null
+                         *       },
+                         *       "description": "Payment Fee",
+                         *       "amount": {
+                         *         "currency": "GBP",
+                         *         "amount": 18
+                         *       },
+                         *       "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *       "dueDate": "2024-03-13T00:00:00+00:00",
+                         *       "valueDate": "2024-03-13T00:00:00+00:00"
+                         *     } */
                         "application/json": components["schemas"]["Fee"];
                     };
                 };
@@ -42,6 +60,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "traceId": "13403e03-c14b-491a-8261-2693dd3432af",
+                         *       "errors": {
+                         *         "fee-id": [
+                         *           "The value of '85d7ffef-c99c-4b57-b18e-323e6b0e8199' is not valid"
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["GetFeeTransactionByIdError400Dto"];
                     };
                 };
@@ -60,6 +89,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -69,6 +109,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
@@ -118,6 +169,50 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "status": "PendingProcessing",
+                         *           "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "description": "Payment Fee",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         },
+                         *         {
+                         *           "status": "PendingProcessing",
+                         *           "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "description": "Payment Fee",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["FeePagedResponse"];
                     };
                 };
@@ -145,6 +240,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -154,6 +260,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
@@ -196,6 +313,24 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "Paid",
+                         *       "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *       "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *       "account": {
+                         *         "account": "DK1234567890123456",
+                         *         "financialInstitution": null,
+                         *         "country": null
+                         *       },
+                         *       "description": "Payment Fee",
+                         *       "amount": {
+                         *         "currency": "GBP",
+                         *         "amount": 18
+                         *       },
+                         *       "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *       "dueDate": "2024-03-13T00:00:00+00:00",
+                         *       "valueDate": "2024-03-13T00:00:00+00:00"
+                         *     } */
                         "application/json": components["schemas"]["FeeV2"];
                     };
                 };
@@ -205,6 +340,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "traceId": "13403e03-c14b-491a-8261-2693dd3432af",
+                         *       "errors": {
+                         *         "fee-id": [
+                         *           "The value of '85d7ffef-c99c-4b57-b18e-323e6b0e8199' is not valid"
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["GetFeeTransactionByIdError400Dto"];
                     };
                 };
@@ -223,6 +369,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -232,6 +389,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
@@ -281,6 +449,50 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "status": "Paid",
+                         *           "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "description": "Payment Fee",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         },
+                         *         {
+                         *           "status": "Paid",
+                         *           "feeId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "description": "Payment Fee",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["FeeV2PagedResponse"];
                     };
                 };
@@ -308,6 +520,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -317,6 +540,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
@@ -359,6 +593,24 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "interestId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *       "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *       "account": {
+                         *         "account": "DK1234567890123456",
+                         *         "financialInstitution": null,
+                         *         "country": null
+                         *       },
+                         *       "status": "Paid",
+                         *       "description": "Interest related Credit for Account 0000123456 for May 2023",
+                         *       "amount": {
+                         *         "currency": "GBP",
+                         *         "amount": 18
+                         *       },
+                         *       "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *       "dueDate": "2024-03-13T00:00:00+00:00",
+                         *       "valueDate": "2024-03-13T00:00:00+00:00"
+                         *     } */
                         "application/json": components["schemas"]["Interest"];
                     };
                 };
@@ -368,6 +620,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "traceId": "13403e03-c14b-491a-8261-2693dd3432af",
+                         *       "errors": {
+                         *         "interest-id": [
+                         *           "The value of '85d7ffef-c99c-4b57-b18e-323e6b0e8199' is not valid"
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["GetInterestTransactionByIdError400Dto"];
                     };
                 };
@@ -386,6 +649,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -395,6 +669,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
@@ -444,6 +729,50 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "interestId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "status": "Paid",
+                         *           "description": "Interest related Credit for Account 0000123456 for May 2023",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         },
+                         *         {
+                         *           "interestId": "3c0c451e-2c68-4878-a7f8-9a26b00b2d13",
+                         *           "accountId": "bb97ed7a-f916-4c75-8edb-c909fa4972de",
+                         *           "account": {
+                         *             "account": "DK1234567890123456",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "status": "Paid",
+                         *           "description": "Interest related Credit for Account 0000123456 for May 2023",
+                         *           "amount": {
+                         *             "currency": "GBP",
+                         *             "amount": 18
+                         *           },
+                         *           "instructedDate": "2024-03-15T00:00:00+00:00",
+                         *           "dueDate": "2024-03-13T00:00:00+00:00",
+                         *           "valueDate": "2024-03-13T00:00:00+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["InterestPagedResponse"];
                     };
                 };
@@ -471,6 +800,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error404Dto"];
                     };
                 };
@@ -480,6 +820,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["Error500Dto"];
                     };
                 };
