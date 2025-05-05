@@ -27,6 +27,47 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example [
+                         *       {
+                         *         "id": "4fe75293-4767-4c80-8be0-329e832fecba",
+                         *         "companyNumber": "000015106",
+                         *         "isMulticurrency": true,
+                         *         "orderType": "reconciliation",
+                         *         "processStatus": "pending",
+                         *         "timeOrdered": "2024-06-10T18:45:37.1051206+00:00",
+                         *         "orderedAmount": 5,
+                         *         "defaultAccount": {
+                         *           "currency": "EUR",
+                         *           "iban": "DK0989000083373808"
+                         *         }
+                         *       },
+                         *       {
+                         *         "id": "0ecf1220-5c50-4189-a996-64187b19b8b9",
+                         *         "companyNumber": "000015106",
+                         *         "isMulticurrency": true,
+                         *         "orderType": "reconciliation",
+                         *         "processStatus": "processed",
+                         *         "timeOrdered": "2024-06-10T18:45:37.1051232+00:00",
+                         *         "orderedAmount": 1,
+                         *         "defaultAccount": {
+                         *           "currency": "EUR",
+                         *           "iban": "DK0989000083373808"
+                         *         }
+                         *       },
+                         *       {
+                         *         "id": "5f802534-9beb-4258-ae52-667dafe1369e",
+                         *         "companyNumber": "000015106",
+                         *         "isMulticurrency": true,
+                         *         "orderType": "reconciliation",
+                         *         "processStatus": "failed",
+                         *         "timeOrdered": "2024-06-10T18:45:37.1051252+00:00",
+                         *         "orderedAmount": 10,
+                         *         "defaultAccount": {
+                         *           "currency": "EUR",
+                         *           "iban": "DK0989000083373808"
+                         *         }
+                         *       }
+                         *     ] */
                         "application/json": components["schemas"]["OrderResponse"][];
                     };
                 };
@@ -179,7 +220,89 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "id": "7739f0aa-b847-494a-b95d-fb7cab3c1edc",
+                         *       "companyNumber": "000015106",
+                         *       "isMulticurrency": true,
+                         *       "orderType": "reconciliation",
+                         *       "processStatus": "processed",
+                         *       "timeOrdered": "2024-06-10T18:45:37.1174772+00:00",
+                         *       "orderedAmount": 1,
+                         *       "defaultAccount": {
+                         *         "currency": "DKK",
+                         *         "iban": "DK0989000083373808"
+                         *       },
+                         *       "masterAccounts": [
+                         *         {
+                         *           "currency": "DKK",
+                         *           "iban": "DK0989000083373808"
+                         *         },
+                         *         {
+                         *           "currency": "EUR",
+                         *           "iban": "DK0989000083373808"
+                         *         }
+                         *       ],
+                         *       "virtualAccounts": {
+                         *         "result": [
+                         *           {
+                         *             "virtualIbans": [
+                         *               "DE86202208000083373808",
+                         *               "DK0989000083373808",
+                         *               "GB13SAPY60838283373808",
+                         *               "LU194080000083373808"
+                         *             ],
+                         *             "virtualAccountNumber": "0083373808",
+                         *             "active": true
+                         *           }
+                         *         ],
+                         *         "pageInfo": {
+                         *           "currentPage": 1,
+                         *           "pageSize": 2
+                         *         }
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["OrderDetailedResponse"];
+                        /** @example {
+                         *       "id": "7739f0aa-b847-494a-b95d-fb7cab3c1edc",
+                         *       "companyNumber": "000015106",
+                         *       "isMulticurrency": true,
+                         *       "orderType": "reconciliation",
+                         *       "processStatus": "processed",
+                         *       "timeOrdered": "2024-06-10T18:45:37.1174772+00:00",
+                         *       "orderedAmount": 1,
+                         *       "defaultAccount": {
+                         *         "currency": "DKK",
+                         *         "iban": "DK0989000083373808"
+                         *       },
+                         *       "masterAccounts": [
+                         *         {
+                         *           "currency": "DKK",
+                         *           "iban": "DK0989000083373808"
+                         *         },
+                         *         {
+                         *           "currency": "EUR",
+                         *           "iban": "DK0989000083373808"
+                         *         }
+                         *       ],
+                         *       "virtualAccounts": {
+                         *         "result": [
+                         *           {
+                         *             "virtualIbans": [
+                         *               "DE86202208000083373808",
+                         *               "DK0989000083373808",
+                         *               "GB13SAPY60838283373808",
+                         *               "LU194080000083373808"
+                         *             ],
+                         *             "virtualAccountNumber": "0083373808",
+                         *             "active": true
+                         *           }
+                         *         ],
+                         *         "pageInfo": {
+                         *           "currentPage": 1,
+                         *           "pageSize": 2
+                         *         }
+                         *       }
+                         *     } */
                         "application/csv": components["schemas"]["OrderDetailedResponse"];
                     };
                 };
@@ -368,6 +491,22 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "companyNumber": "000015106",
+                         *       "virtualAccountNumber": "0083373808",
+                         *       "virtualIbans": [
+                         *         "DE86202208000083373808",
+                         *         "GB13SAPY60838283373808",
+                         *         "DK0989000083373808",
+                         *         "LU194080000083373808"
+                         *       ],
+                         *       "defaultAccount": {
+                         *         "currency": "DKK",
+                         *         "iban": "DK0989000083373808"
+                         *       },
+                         *       "creationDate": "2024-06-10T18:45:37.1326231Z",
+                         *       "virtualAccountType": "Pobo"
+                         *     } */
                         "application/json": components["schemas"]["VirtualAccountBaseResponse"];
                     };
                 };
@@ -451,6 +590,28 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "virtualAccountNumber": "0000345678",
+                         *       "customerDetails": {
+                         *         "customerType": "P",
+                         *         "customerIdentifier": "string",
+                         *         "name": "string",
+                         *         "address1": "string",
+                         *         "address2": "string",
+                         *         "address3": "string",
+                         *         "beneficiaryOwnerFirstName1": "string",
+                         *         "beneficiaryOwnerLastName1": "string",
+                         *         "beneficiaryOwnerFirstName2": "string",
+                         *         "beneficiaryOwnerLastName2": "string",
+                         *         "beneficiaryOwnerFirstName3": "string",
+                         *         "beneficiaryOwnerLastName3": "string",
+                         *         "beneficiaryOwnerFirstName4": "string",
+                         *         "beneficiaryOwnerLastName4": "string",
+                         *         "beneficiaryOwnerFirstName5": "string",
+                         *         "beneficiaryOwnerLastName5": "string"
+                         *       },
+                         *       "status": "Processed"
+                         *     } */
                         "application/json": components["schemas"]["CustomerDetailsStatusResponse"];
                     };
                 };

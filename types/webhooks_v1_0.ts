@@ -27,7 +27,7 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -38,7 +38,8 @@ export interface paths {
                         "text/json": components["schemas"]["SubscriptionEventCommandResult"];
                     };
                 };
-                /** @description Bad request.<br />Request is not correctly formulated or validation of input failed. Check the error description. */
+                /** @description Bad request.
+                 *     Request is not correctly formulated or validation of input failed. Check the error description. */
                 400: {
                     headers: {
                         [name: string]: unknown;
@@ -101,7 +102,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -156,13 +157,15 @@ export interface paths {
             parameters: {
                 query?: {
                     /**
-                     * @description Number of pages returned.<br />
+                     * @description Number of pages returned.
+                     *
                      *     Condition: Valid page number (1 to n)
                      * @example 1
                      */
                     PageNumber?: number;
                     /**
-                     * @description Number of items returned per page.<br />
+                     * @description Number of items returned per page.
+                     *
                      *     Condition: Valid number of items (1 to 5000)
                      * @example 50
                      */
@@ -174,7 +177,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -220,7 +223,7 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -231,7 +234,8 @@ export interface paths {
                         "text/json": components["schemas"]["SubscriptionCommandResult"];
                     };
                 };
-                /** @description Bad request.<br />Request is not correctly formulated or validation of input failed. Check the error description. */
+                /** @description Bad request.
+                 *     Request is not correctly formulated or validation of input failed. Check the error description. */
                 400: {
                     headers: {
                         [name: string]: unknown;
@@ -288,7 +292,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -350,7 +354,7 @@ export interface paths {
                 };
             };
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -361,7 +365,8 @@ export interface paths {
                         "text/json": components["schemas"]["SubscriptionCommandResult"];
                     };
                 };
-                /** @description Bad request.<br />Request is not correctly formulated or validation of input failed. Check the error description. */
+                /** @description Bad request.
+                 *     Request is not correctly formulated or validation of input failed. Check the error description. */
                 400: {
                     headers: {
                         [name: string]: unknown;
@@ -420,7 +425,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -487,7 +492,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -556,7 +561,7 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Success */
+                /** @description OK */
                 200: {
                     headers: {
                         [name: string]: unknown;
@@ -620,7 +625,7 @@ export interface components {
              */
             subscriptionId: string;
             /** @description Company id(s) or bank acount id(s) */
-            targetIds: string[];
+            targetIds?: string[] | null;
             eventType: components["schemas"]["SubscriptionEventType"];
             targetType: components["schemas"]["TargetType"];
         };
@@ -634,7 +639,11 @@ export interface components {
         /**
          * Format: int32
          * @description Status of the subscription
-         *     <br>0 = None<br>1 = Inactive<br>2 = Active<br>4 = Retired
+         *
+         *     0 = None
+         *     1 = Inactive
+         *     2 = Active
+         *     4 = Retired
          * @enum {integer}
          */
         NotificationStatus: 0 | 1 | 2 | 4;
@@ -731,10 +740,19 @@ export interface components {
         };
         /**
          * @description The type of event that will trigger the subscription.
-         *     <br>1 = IncomingPaymentProcessed<br>2 = OutgoingPaymentRejected<br>3 = OutgoingPaymentProcessed<br>4 = MissingFunding<br>5 = Reversed<br>6 = OutgoingPaymentBooked
+         *
+         *     1 = IncomingPaymentProcessed
+         *     2 = OutgoingPaymentRejected
+         *     3 = OutgoingPaymentProcessed
+         *     4 = MissingFunding
+         *     5 = Reversed
+         *     6 = OutgoingPaymentBooked
+         *     7 = PaymentRouting
+         *     8 = IncomingPaymentBooked
+         *     10 = OutgoingDirectDebitPendingProcessing
          * @enum {string}
          */
-        SubscriptionEventType: "Unknown" | "IncomingPaymentProcessed" | "OutgoingPaymentRejected" | "OutgoingPaymentProcessed" | "MissingFunding" | "Reversed" | "OutgoingPaymentBooked";
+        SubscriptionEventType: "Unknown" | "IncomingPaymentProcessed" | "OutgoingPaymentRejected" | "OutgoingPaymentProcessed" | "MissingFunding" | "Reversed" | "OutgoingPaymentBooked" | "PaymentRouting" | "IncomingPaymentBooked" | "OutgoingDirectDebitPendingProcessing";
         SubscriptionQueryResult: {
             /**
              * Format: uuid
@@ -764,10 +782,13 @@ export interface components {
         /**
          * Format: int32
          * @description Type of target
-         *     <br>0 = Account <br>1 = Company
+         *
+         *     0 = Account
+         *     1 = Company
+         *     2 = CompanyGroup
          * @enum {integer}
          */
-        TargetType: 0 | 1;
+        TargetType: 0 | 1 | 2;
         UpdateSubscriptionDto: {
             /** @description Updated 32 characters encryption key */
             encryptionKey?: string | null;

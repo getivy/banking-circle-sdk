@@ -196,6 +196,338 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "transactionReference": "010F104230918348",
+                         *           "concurrencyToken": "1699603388",
+                         *           "classification": "Outgoing",
+                         *           "subClassification": "Internal",
+                         *           "isTraceable": true,
+                         *           "status": "Processed",
+                         *           "processedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "latestStatusChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "booked": true,
+                         *           "reversalBooked": null,
+                         *           "return": null,
+                         *           "paymentRail": "Internal",
+                         *           "errors": [],
+                         *           "lastChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "debtorInformation": {
+                         *             "paymentBulkId": null,
+                         *             "accountId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *             "account": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": null
+                         *             },
+                         *             "vibanId": null,
+                         *             "viban": null,
+                         *             "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *             "debitAmount": {
+                         *               "currency": "DKK",
+                         *               "amount": 5
+                         *             },
+                         *             "debitValueDate": "2024-06-14T00:00:00+00:00",
+                         *             "fxRate": null,
+                         *             "instruction": {
+                         *               "debtorAccount": {
+                         *                 "account": "DK4589000000010099",
+                         *                 "financialInstitution": null,
+                         *                 "country": null
+                         *               },
+                         *               "debtorViban": null,
+                         *               "debtorReference": "TEST REFERENCE 1",
+                         *               "debtorNarrativeToSelf": null,
+                         *               "currencyOfTransfer": "DKK",
+                         *               "amount": {
+                         *                 "currency": "DKK",
+                         *                 "amount": 5
+                         *               },
+                         *               "requestedExecutionDate": "2024-06-14T00:00:00+00:00",
+                         *               "chargeBearer": "SHA",
+                         *               "remittanceInformation": {
+                         *                 "line1": "Remittance information line 1",
+                         *                 "line2": "Remittance information line 2",
+                         *                 "line3": "Remittance information line 3",
+                         *                 "line4": "Remittance information line 4"
+                         *               },
+                         *               "creditorId": null,
+                         *               "creditorAccount": {
+                         *                 "account": "DK5589000000011471",
+                         *                 "financialInstitution": "SXPYDKKKXXX",
+                         *                 "country": "DK"
+                         *               },
+                         *               "creditorName": "CREDITOR NAME",
+                         *               "creditorAddress": {
+                         *                 "line1": "CREDITOR ADDRESS 1",
+                         *                 "line2": "CREDITOR ADDRESS 2",
+                         *                 "line3": null
+                         *               },
+                         *               "instructedChargeBearer": "SHA",
+                         *               "clearingNetwork": null,
+                         *               "debtorName": null,
+                         *               "debtorAddress": null,
+                         *               "ultimateDebtorAccount": null,
+                         *               "ultimateDebtorName": null,
+                         *               "ultimateDebtorAddress": null,
+                         *               "clientCustomerId": null
+                         *             }
+                         *           },
+                         *           "transfer": {
+                         *             "debtorAccount": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": "DK"
+                         *             },
+                         *             "debtorName": "DEBTOR NAME",
+                         *             "debtorAddress": null,
+                         *             "amount": {
+                         *               "currency": "DKK",
+                         *               "amount": 5
+                         *             },
+                         *             "valueDate": "2024-06-14T00:00:00+00:00",
+                         *             "chargeBearer": "SHA",
+                         *             "remittanceInformation": {
+                         *               "line1": "Remittance information line 1",
+                         *               "line2": "Remittance information line 2",
+                         *               "line3": "Remittance information line 3",
+                         *               "line4": "Remittance information line 4"
+                         *             },
+                         *             "additionalRemittanceInformation": null,
+                         *             "creditorAccount": {
+                         *               "account": "DK5589000000011471",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": "DK"
+                         *             },
+                         *             "creditorName": "CREDITOR NAME",
+                         *             "creditorAddress": {
+                         *               "line1": "CREDITOR ADDRESS 1",
+                         *               "line2": "CREDITOR ADDRESS 2",
+                         *               "line3": null
+                         *             },
+                         *             "ultimateCreditorAccount": null,
+                         *             "instructedChargeBearer": "SHA"
+                         *           },
+                         *           "creditorInformation": null,
+                         *           "statusReasons": null,
+                         *           "purposeCode": null,
+                         *           "possibleActions": []
+                         *         },
+                         *         {
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "transactionReference": "010F103233198349",
+                         *           "concurrencyToken": "1699603388",
+                         *           "classification": "Outgoing",
+                         *           "subClassification": "Internal",
+                         *           "isTraceable": false,
+                         *           "status": "Reversed",
+                         *           "processedTimestamp": "2024-06-14T11:07:23+00:00",
+                         *           "latestStatusChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "booked": true,
+                         *           "reversalBooked": true,
+                         *           "return": null,
+                         *           "errors": [],
+                         *           "lastChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "debtorInformation": {
+                         *             "paymentBulkId": null,
+                         *             "accountId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *             "account": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": null
+                         *             },
+                         *             "vibanId": null,
+                         *             "viban": null,
+                         *             "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *             "debitAmount": {
+                         *               "currency": "DKK",
+                         *               "amount": 166
+                         *             },
+                         *             "debitValueDate": "2024-06-14T00:00:00+00:00",
+                         *             "fxRate": null,
+                         *             "instruction": {
+                         *               "debtorAccount": {
+                         *                 "account": "DK4589000000010099",
+                         *                 "financialInstitution": null,
+                         *                 "country": null
+                         *               },
+                         *               "debtorViban": null,
+                         *               "debtorReference": "TEST REFERENCE 2",
+                         *               "debtorNarrativeToSelf": null,
+                         *               "currencyOfTransfer": "DKK",
+                         *               "amount": {
+                         *                 "currency": "DKK",
+                         *                 "amount": 166
+                         *               },
+                         *               "requestedExecutionDate": "2024-06-14T00:00:00+00:00",
+                         *               "chargeBearer": "SHA",
+                         *               "remittanceInformation": {
+                         *                 "line1": "Remittance information line 1",
+                         *                 "line2": "Remittance information line 2",
+                         *                 "line3": "Remittance information line 3",
+                         *                 "line4": "Remittance information line 4"
+                         *               },
+                         *               "creditorId": null,
+                         *               "creditorAccount": {
+                         *                 "account": "DK5589000000011471",
+                         *                 "financialInstitution": "SXPYDKKKXXX",
+                         *                 "country": "DK"
+                         *               },
+                         *               "creditorName": "CREDITOR NAME",
+                         *               "creditorAddress": {
+                         *                 "line1": "CREDITOR ADDRESS 1",
+                         *                 "line2": "CREDITOR ADDRESS 2",
+                         *                 "line3": null
+                         *               },
+                         *               "instructedChargeBearer": "SHA",
+                         *               "clearingNetwork": null,
+                         *               "debtorName": null,
+                         *               "debtorAddress": null,
+                         *               "ultimateDebtorAccount": null,
+                         *               "ultimateDebtorName": null,
+                         *               "ultimateDebtorAddress": null,
+                         *               "clientCustomerId": null
+                         *             }
+                         *           },
+                         *           "transfer": {
+                         *             "debtorAccount": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": "DK"
+                         *             },
+                         *             "debtorName": "DEBTOR NAME",
+                         *             "debtorAddress": {
+                         *               "line1": "ADD1 000012356",
+                         *               "line2": "ADD2 000012356",
+                         *               "line3": "ADD3 000012356"
+                         *             },
+                         *             "amount": {
+                         *               "currency": "DKK",
+                         *               "amount": 166
+                         *             },
+                         *             "valueDate": "2024-06-14T00:00:00+00:00",
+                         *             "chargeBearer": "SHA",
+                         *             "remittanceInformation": {
+                         *               "line1": "Remittance information line 1",
+                         *               "line2": "Remittance information line 2",
+                         *               "line3": "Remittance information line 3",
+                         *               "line4": "Remittance information line 4"
+                         *             },
+                         *             "additionalRemittanceInformation": null,
+                         *             "creditorAccount": {
+                         *               "account": "DK5589000000011471",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": "DK"
+                         *             },
+                         *             "creditorName": "CREDITOR NAME",
+                         *             "creditorAddress": {
+                         *               "line1": "CREDITOR ADDRESS 1",
+                         *               "line2": "CREDITOR ADDRESS 2",
+                         *               "line3": null
+                         *             },
+                         *             "ultimateCreditorAccount": null,
+                         *             "instructedChargeBearer": "SHA"
+                         *           },
+                         *           "creditorInformation": null,
+                         *           "statusReasons": [
+                         *             {
+                         *               "reasonCode": "10001",
+                         *               "reasonDescription": "No data found"
+                         *             }
+                         *           ],
+                         *           "purposeCode": null,
+                         *           "possibleActions": []
+                         *         },
+                         *         {
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "transactionReference": "010F312233198348",
+                         *           "concurrencyToken": "1699603388",
+                         *           "classification": "Outgoing",
+                         *           "subClassification": "Internal",
+                         *           "isTraceable": true,
+                         *           "status": "Processed",
+                         *           "processedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "latestStatusChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "booked": null,
+                         *           "reversalBooked": null,
+                         *           "return": true,
+                         *           "paymentRail": "SEPA (SCT)",
+                         *           "errors": null,
+                         *           "lastChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *           "debtorInformation": null,
+                         *           "transfer": {
+                         *             "debtorAccount": {
+                         *               "account": "80732112",
+                         *               "financialInstitution": "SFXLGB2LXXX",
+                         *               "country": "GB"
+                         *             },
+                         *             "debtorName": "DEBTOR NAME",
+                         *             "debtorAddress": {
+                         *               "line1": "DEBTOR ADDRESS 1",
+                         *               "line2": "DEBTOR ADDRESS 2",
+                         *               "line3": null
+                         *             },
+                         *             "amount": {
+                         *               "currency": "GBP",
+                         *               "amount": 3.43
+                         *             },
+                         *             "valueDate": "2024-06-14T00:00:00+00:00",
+                         *             "chargeBearer": "BEN",
+                         *             "remittanceInformation": {
+                         *               "line1": "Remittance information line 1",
+                         *               "line2": "Remittance information line 2",
+                         *               "line3": "Remittance information line 3",
+                         *               "line4": "Remittance information line 4"
+                         *             },
+                         *             "additionalRemittanceInformation": {
+                         *               "line1": "/RETN/",
+                         *               "line2": "/AC01/Incorrect Account Number",
+                         *               "line3": "/MREF/010F2102331883HJ",
+                         *               "line4": null,
+                         *               "line5": null
+                         *             },
+                         *             "creditorAccount": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": "DK"
+                         *             },
+                         *             "creditorName": "CREDITOR NAME",
+                         *             "creditorAddress": {
+                         *               "line1": "CREDITOR ADDRESS 1",
+                         *               "line2": "CREDITOR ADDRESS 2",
+                         *               "line3": null
+                         *             },
+                         *             "ultimateCreditorAccount": null,
+                         *             "instructedChargeBearer": null
+                         *           },
+                         *           "creditorInformation": {
+                         *             "accountId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *             "account": {
+                         *               "account": "DK4589000000010099",
+                         *               "financialInstitution": "SXPYDKKKXXX",
+                         *               "country": null
+                         *             },
+                         *             "vibanId": null,
+                         *             "viban": null,
+                         *             "creditAmount": {
+                         *               "currency": "DKK",
+                         *               "amount": 30.31
+                         *             },
+                         *             "creditValueDate": "2024-06-14T00:00:00+00:00",
+                         *             "fxRate": 8.8386834
+                         *           },
+                         *           "statusReasons": null,
+                         *           "purposeCode": null,
+                         *           "possibleActions": []
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": {
                             /** IEnumerable */
                             Result?: components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.Payments.Payment"][];
@@ -209,6 +541,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "errors": {
+                         *         "PaymentId": [
+                         *           "The value '9899660E-BFBF-4537-A4CB-D13FDasf09D9C93' is not valid for PaymentId."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentsSinglesError400Dto"];
                     };
                 };
@@ -227,6 +569,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -236,6 +590,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -274,6 +640,10 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "status": "PendingProcessing"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentCreationResponse"];
                     };
                 };
@@ -301,6 +671,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -310,6 +692,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "20f1dd79-1ec9-49dc-8d14-1b2c2f0ab89b",
+                         *       "propertyName": null,
+                         *       "errorCode": "DuplicateIdempotencyKey",
+                         *       "errorDescription": "Duplicate Idempotency Key has been detected"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentsSinglesIdempotencyError409Dto"];
                     };
                 };
@@ -319,6 +707,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -362,6 +762,9 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "PendingProcessing"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentStatusResponseExampleData"];
                     };
                 };
@@ -380,6 +783,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -389,6 +804,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -434,6 +861,123 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "transactionReference": "010F104233198348",
+                         *       "concurrencyToken": "1699603388",
+                         *       "classification": "Outgoing",
+                         *       "subClassification": "Internal",
+                         *       "isTraceable": true,
+                         *       "status": "Processed",
+                         *       "processedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "latestStatusChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "booked": true,
+                         *       "reversalBooked": null,
+                         *       "return": null,
+                         *       "paymentRail": "Internal",
+                         *       "errors": [],
+                         *       "lastChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "debtorInformation": {
+                         *         "paymentBulkId": null,
+                         *         "accountId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *         "account": {
+                         *           "account": "DK4589000000010099",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": null
+                         *         },
+                         *         "vibanId": null,
+                         *         "viban": null,
+                         *         "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *         "debitAmount": {
+                         *           "currency": "DKK",
+                         *           "amount": 5
+                         *         },
+                         *         "debitValueDate": "2024-06-14T00:00:00+00:00",
+                         *         "fxRate": null,
+                         *         "instruction": {
+                         *           "debtorAccount": {
+                         *             "account": "DK4589000000010099",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "debtorViban": null,
+                         *           "debtorReference": "TEST REFERENCE 1",
+                         *           "debtorNarrativeToSelf": null,
+                         *           "currencyOfTransfer": "DKK",
+                         *           "amount": {
+                         *             "currency": "DKK",
+                         *             "amount": 5
+                         *           },
+                         *           "requestedExecutionDate": "2024-06-14T00:00:00+00:00",
+                         *           "chargeBearer": "SHA",
+                         *           "remittanceInformation": {
+                         *             "line1": "Remittance information line 1",
+                         *             "line2": "Remittance information line 2",
+                         *             "line3": "Remittance information line 3",
+                         *             "line4": "Remittance information line 4"
+                         *           },
+                         *           "creditorId": null,
+                         *           "creditorAccount": {
+                         *             "account": "DK5589000000011471",
+                         *             "financialInstitution": "SXPYDKKKXXX",
+                         *             "country": "DK"
+                         *           },
+                         *           "creditorName": "CREDITOR NAME",
+                         *           "creditorAddress": {
+                         *             "line1": "CREDITOR ADDRESS 1",
+                         *             "line2": "CREDITOR ADDRESS 2",
+                         *             "line3": null
+                         *           },
+                         *           "instructedChargeBearer": "SHA",
+                         *           "clearingNetwork": null,
+                         *           "debtorName": null,
+                         *           "debtorAddress": null,
+                         *           "ultimateDebtorAccount": null,
+                         *           "ultimateDebtorName": null,
+                         *           "ultimateDebtorAddress": null,
+                         *           "clientCustomerId": null
+                         *         }
+                         *       },
+                         *       "transfer": {
+                         *         "debtorAccount": {
+                         *           "account": "DK4589000000010099",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": "DK"
+                         *         },
+                         *         "debtorName": "DEBTOR NAME",
+                         *         "debtorAddress": null,
+                         *         "amount": {
+                         *           "currency": "DKK",
+                         *           "amount": 5
+                         *         },
+                         *         "valueDate": "2024-06-14T00:00:00+00:00",
+                         *         "chargeBearer": "SHA",
+                         *         "remittanceInformation": {
+                         *           "line1": "Remittance information line 1",
+                         *           "line2": "Remittance information line 2",
+                         *           "line3": "Remittance information line 3",
+                         *           "line4": "Remittance information line 4"
+                         *         },
+                         *         "additionalRemittanceInformation": null,
+                         *         "creditorAccount": {
+                         *           "account": "DK5589000000011471",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": "DK"
+                         *         },
+                         *         "creditorName": "CREDITOR NAME",
+                         *         "creditorAddress": {
+                         *           "line1": "CREDITOR ADDRESS 1",
+                         *           "line2": "CREDITOR ADDRESS 2",
+                         *           "line3": null
+                         *         },
+                         *         "ultimateCreditorAccount": null,
+                         *         "instructedChargeBearer": "SHA"
+                         *       },
+                         *       "creditorInformation": null,
+                         *       "statusReasons": null,
+                         *       "purposeCode": null,
+                         *       "possibleActions": []
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.Payments.Payment"];
                     };
                 };
@@ -443,6 +987,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "errors": {
+                         *         "payment-id": [
+                         *           "The value '460C7840-2600-4418-D-B026-C7F38DA3A737' is not valid."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentByIdError400Dto"];
                     };
                 };
@@ -461,6 +1015,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -470,12 +1036,185 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
             };
         };
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/payments/singles/{payment-id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Initiate the cancellation of an active payment process.
+         *     If successful, the payment will have a final state with status = Cancelled */
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Payment identifier | Payment.paymentId */
+                    "payment-id": string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad request.<br />Request is not correctly formulated. Goes for both Header, Query and Body. Verify the error description and properties. */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "errorCode": "UnsupportedPaymentType",
+                         *           "errorDescription": "Requested action is not supported for this type of payment"
+                         *         }
+                         *       ]
+                         *     } */
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentCancelFailureResponse"];
+                    };
+                };
+                /** @description Forbidden. The server understood the request, but is refusing it or the access is not allowed, i.e. if resource exists but calling user does not have rights to access it. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.NoResponse"];
+                    };
+                };
+                /** @description Not found. There is no resource behind the URL, i.e. requesting data on an account that does not exist. */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/payments/singles/{payment-id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Initiate the rejection of an active payment process for a direct debit */
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Payment identifier | Payment.paymentId */
+                    "payment-id": string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad request.<br />Request is not correctly formulated. Goes for both Header, Query and Body. Verify the error description and properties. */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentRejectFailureResponse"];
+                    };
+                };
+                /** @description Forbidden. The server understood the request, but is refusing it or the access is not allowed, i.e. if resource exists but calling user does not have rights to access it. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.NoResponse"];
+                    };
+                };
+                /** @description Not found. There is no resource behind the URL, i.e. requesting data on an account that does not exist. */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
+                    };
+                };
+            };
+        };
         post?: never;
         delete?: never;
         options?: never;
@@ -524,6 +1263,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "errors": {
+                         *         "payment-id": [
+                         *           "The value '460C7840-2600-4418-D-B026-C7F38DA3A737' is not valid."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentByIdError400Dto"];
                     };
                 };
@@ -542,6 +1291,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "errors": {}
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.Mt103PaymentErrorDto"];
                     };
                 };
@@ -551,6 +1306,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -596,6 +1363,123 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "transactionReference": "010F104233198348",
+                         *       "concurrencyToken": "1699603388",
+                         *       "classification": "Outgoing",
+                         *       "subClassification": "Internal",
+                         *       "isTraceable": true,
+                         *       "status": "Processed",
+                         *       "processedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "latestStatusChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "booked": true,
+                         *       "reversalBooked": null,
+                         *       "return": null,
+                         *       "paymentRail": "Internal",
+                         *       "errors": [],
+                         *       "lastChangedTimestamp": "2024-06-14T11:17:42+00:00",
+                         *       "debtorInformation": {
+                         *         "paymentBulkId": null,
+                         *         "accountId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *         "account": {
+                         *           "account": "DK4589000000010099",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": null
+                         *         },
+                         *         "vibanId": null,
+                         *         "viban": null,
+                         *         "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *         "debitAmount": {
+                         *           "currency": "DKK",
+                         *           "amount": 5
+                         *         },
+                         *         "debitValueDate": "2024-06-14T00:00:00+00:00",
+                         *         "fxRate": null,
+                         *         "instruction": {
+                         *           "debtorAccount": {
+                         *             "account": "DK4589000000010099",
+                         *             "financialInstitution": null,
+                         *             "country": null
+                         *           },
+                         *           "debtorViban": null,
+                         *           "debtorReference": "TEST REFERENCE 1",
+                         *           "debtorNarrativeToSelf": null,
+                         *           "currencyOfTransfer": "DKK",
+                         *           "amount": {
+                         *             "currency": "DKK",
+                         *             "amount": 5
+                         *           },
+                         *           "requestedExecutionDate": "2024-06-14T00:00:00+00:00",
+                         *           "chargeBearer": "SHA",
+                         *           "remittanceInformation": {
+                         *             "line1": "Remittance information line 1",
+                         *             "line2": "Remittance information line 2",
+                         *             "line3": "Remittance information line 3",
+                         *             "line4": "Remittance information line 4"
+                         *           },
+                         *           "creditorId": null,
+                         *           "creditorAccount": {
+                         *             "account": "DK5589000000011471",
+                         *             "financialInstitution": "SXPYDKKKXXX",
+                         *             "country": "DK"
+                         *           },
+                         *           "creditorName": "CREDITOR NAME",
+                         *           "creditorAddress": {
+                         *             "line1": "CREDITOR ADDRESS 1",
+                         *             "line2": "CREDITOR ADDRESS 2",
+                         *             "line3": null
+                         *           },
+                         *           "instructedChargeBearer": "SHA",
+                         *           "clearingNetwork": null,
+                         *           "debtorName": null,
+                         *           "debtorAddress": null,
+                         *           "ultimateDebtorAccount": null,
+                         *           "ultimateDebtorName": null,
+                         *           "ultimateDebtorAddress": null,
+                         *           "clientCustomerId": null
+                         *         }
+                         *       },
+                         *       "transfer": {
+                         *         "debtorAccount": {
+                         *           "account": "DK4589000000010099",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": "DK"
+                         *         },
+                         *         "debtorName": "DEBTOR NAME",
+                         *         "debtorAddress": null,
+                         *         "amount": {
+                         *           "currency": "DKK",
+                         *           "amount": 5
+                         *         },
+                         *         "valueDate": "2024-06-14T00:00:00+00:00",
+                         *         "chargeBearer": "SHA",
+                         *         "remittanceInformation": {
+                         *           "line1": "Remittance information line 1",
+                         *           "line2": "Remittance information line 2",
+                         *           "line3": "Remittance information line 3",
+                         *           "line4": "Remittance information line 4"
+                         *         },
+                         *         "additionalRemittanceInformation": null,
+                         *         "creditorAccount": {
+                         *           "account": "DK5589000000011471",
+                         *           "financialInstitution": "SXPYDKKKXXX",
+                         *           "country": "DK"
+                         *         },
+                         *         "creditorName": "CREDITOR NAME",
+                         *         "creditorAddress": {
+                         *           "line1": "CREDITOR ADDRESS 1",
+                         *           "line2": "CREDITOR ADDRESS 2",
+                         *           "line3": null
+                         *         },
+                         *         "ultimateCreditorAccount": null,
+                         *         "instructedChargeBearer": "SHA"
+                         *       },
+                         *       "creditorInformation": null,
+                         *       "statusReasons": null,
+                         *       "purposeCode": null,
+                         *       "possibleActions": []
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.Payments.Payment"];
                     };
                 };
@@ -605,6 +1489,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "errors": {
+                         *         "payment-id": [
+                         *           "The value '460C7840-2600-4418-D-B026-C7F38DA3A737' is not valid."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentByIdError400Dto"];
                     };
                 };
@@ -623,6 +1517,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -632,6 +1538,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -726,6 +1644,35 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "paymentBulkId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "concurrencyToken": "1699603388",
+                         *           "status": "PendingProcessing",
+                         *           "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *           "paymentStatistics": {
+                         *             "processed": 10,
+                         *             "pendingProcessing": 10,
+                         *             "rejected": 0,
+                         *             "missingFunding": 0,
+                         *             "cancelled": 0,
+                         *             "pendingApproval": 0,
+                         *             "pendingSca": 0,
+                         *             "scaDeclined": 0,
+                         *             "scaExpired": 0,
+                         *             "declinedByApprover": 0,
+                         *             "reversed": 0,
+                         *             "total": 20,
+                         *             "aggregatedAmount": 244
+                         *           }
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50
+                         *       }
+                         *     } */
                         "application/json": {
                             /** IEnumerable */
                             Result?: components["schemas"]["BankingCircle.Payments.Api.Data.PaymentBulk.PaymentBulk"][];
@@ -757,6 +1704,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -766,6 +1725,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -822,6 +1793,10 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentBulkId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "status": "PendingProcessing"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.PaymentBulk.PaymentBulkCreationResponse"];
                     };
                 };
@@ -849,6 +1824,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -858,6 +1845,19 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "Csv",
+                         *       "errors": [
+                         *         {
+                         *           "paymentBulkId": "dc0bd1aa-8491-461a-b1c9-23fdd2007be8",
+                         *           "fieldIndex": 0,
+                         *           "elementIndex": 0,
+                         *           "errorCode": "DuplicateFileUpload",
+                         *           "errorDescription": "Identical Idempotency Key is already uploaded once for this user."
+                         *         }
+                         *       ],
+                         *       "canProceedWithErrors": false
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentsBulkIdempotencyError409Dto"];
                     };
                 };
@@ -881,6 +1881,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -921,6 +1933,27 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentBulkId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "concurrencyToken": "1699603388",
+                         *       "status": "Approved",
+                         *       "instructedDate": "2024-06-14T00:00:00+00:00",
+                         *       "paymentStatistics": {
+                         *         "processed": 232,
+                         *         "pendingProcessing": 0,
+                         *         "rejected": 0,
+                         *         "missingFunding": 0,
+                         *         "cancelled": 0,
+                         *         "pendingApproval": 0,
+                         *         "pendingSca": 0,
+                         *         "scaDeclined": 0,
+                         *         "scaExpired": 0,
+                         *         "declinedByApprover": 0,
+                         *         "reversed": 0,
+                         *         "total": 232,
+                         *         "aggregatedAmount": 274933
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.PaymentBulk.PaymentBulk"];
                     };
                 };
@@ -939,6 +1972,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -948,6 +1993,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -990,6 +2047,9 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "PendingProcessing"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentBulkStatusExampleData"];
                     };
                 };
@@ -1008,6 +2068,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -1017,12 +2089,101 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
             };
         };
         put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/payments/bulks/{payment-bulk-id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Initiate the cancellation of active payment processes, belonging to the same bulk.
+         *     If successful, payments eligible for cancellation will be cancelled and have a final state with status = Cancelled. */
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description Payment Bulk identifier | PaymentBulk.paymentBulkId */
+                    "payment-bulk-id": string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Bad request.<br />Request is not correctly formulated. Goes for both Header, Query and Body. Verify the error description and properties. */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.PaymentBulk.PaymentBulkCancelFailureResponse"];
+                    };
+                };
+                /** @description Forbidden. The server understood the request, but is refusing it or the access is not allowed, i.e. if resource exists but calling user does not have rights to access it. */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.NoResponse"];
+                    };
+                };
+                /** @description Not found. There is no resource behind the URL, i.e. requesting data on an account that does not exist. */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
+                        "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
+                    };
+                };
+            };
+        };
         post?: never;
         delete?: never;
         options?: never;
@@ -1121,6 +2282,10 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "status": "PendingProcessing"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentCreationResponse"];
                     };
                 };
@@ -1148,6 +2313,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -1157,6 +2334,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "paymentId": "20f1dd79-1ec9-49dc-8d14-1b2c2f0ab89b",
+                         *       "propertyName": null,
+                         *       "errorCode": "DuplicateIdempotencyKey",
+                         *       "errorDescription": "Duplicate Idempotency Key has been detected"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetPaymentsSinglesIdempotencyError409Dto"];
                     };
                 };
@@ -1166,6 +2349,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError500Dto"];
                     };
                 };
@@ -1236,6 +2431,49 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example <Pain002CreatePayment200RejectedResponseExample xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/BankingCircle.Payments.Api.Data.SwaggerExampleData">
+                         *       <cstmrPmtStsRptField xmlns="http://schemas.datacontract.org/2004/07/BankingCircle.Payments.Api.Data.SwaggerExampleData.CustomPainDocuments.Pain002CreatePayment201AcceptedResponseExample">
+                         *         <grpHdrField>
+                         *           <initgPtyField>
+                         *             <idField>
+                         *               <itemField i:type="OrganisationIdentification4">
+                         *                 <bICOrBEIField>SXPYDKKKXXX</bICOrBEIField>
+                         *               </itemField>
+                         *             </idField>
+                         *           </initgPtyField>
+                         *           <msgIdField>1bb3bf30d46345838260b01429049d52</msgIdField>
+                         *         </grpHdrField>
+                         *         <orgnlGrpInfAndStsField>
+                         *           <grpStsField>RJCT</grpStsField>
+                         *           <grpStsFieldSpecified>true</grpStsFieldSpecified>
+                         *           <orgnlCreDtTmField>0001-01-01T00:00:00</orgnlCreDtTmField>
+                         *           <orgnlCreDtTmFieldSpecified>false</orgnlCreDtTmFieldSpecified>
+                         *           <orgnlCtrlSumField>0</orgnlCtrlSumField>
+                         *           <orgnlCtrlSumFieldSpecified>false</orgnlCtrlSumFieldSpecified>
+                         *           <orgnlMsgIdField>POBOPaymentTestTATA14</orgnlMsgIdField>
+                         *           <orgnlMsgNmIdField>pain.001.001.03</orgnlMsgNmIdField>
+                         *         </orgnlGrpInfAndStsField>
+                         *         <orgnlPmtInfAndStsField>
+                         *           <OriginalPaymentInformation1>
+                         *             <orgnlCtrlSumField>0</orgnlCtrlSumField>
+                         *             <orgnlCtrlSumFieldSpecified>false</orgnlCtrlSumFieldSpecified>
+                         *             <orgnlPmtInfIdField>1POBOTestTATA</orgnlPmtInfIdField>
+                         *             <pmtInfStsField>ACTC</pmtInfStsField>
+                         *             <pmtInfStsFieldSpecified>false</pmtInfStsFieldSpecified>
+                         *             <txInfAndStsField>
+                         *               <PaymentTransactionInformation25>
+                         *                 <accptncDtTmField>0001-01-01T00:00:00</accptncDtTmField>
+                         *                 <accptncDtTmFieldSpecified>false</accptncDtTmFieldSpecified>
+                         *                 <orgnlEndToEndIdField>PRAPTESTREMINFOR02</orgnlEndToEndIdField>
+                         *                 <orgnlInstrIdField>PRAPTEST12APR01</orgnlInstrIdField>
+                         *                 <txStsField>RJCT</txStsField>
+                         *                 <txStsFieldSpecified>true</txStsFieldSpecified>
+                         *               </PaymentTransactionInformation25>
+                         *             </txInfAndStsField>
+                         *           </OriginalPaymentInformation1>
+                         *         </orgnlPmtInfAndStsField>
+                         *       </cstmrPmtStsRptField>
+                         *     </Pain002CreatePayment200RejectedResponseExample> */
                         "application/xml": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.Pain002CreatePayment200RejectedResponseExample"];
                     };
                 };
@@ -1302,6 +2540,20 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ],
+                         *       "account": null,
+                         *       "_links": null
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.Pain002CreatePayment404Response"];
                     };
                 };
@@ -1319,6 +2571,17 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "Id": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "Type": "Pain001",
+                         *       "Errors": [
+                         *         {
+                         *           "PaymentBulkId": "fa5eba78-a2a5-4ceb-916a-d3fd355c94cb",
+                         *           "ErrorCode": "DuplicateIdempotencyKey",
+                         *           "ErrorDescription": "Identical Idempotency Key is already uploaded once for this user."
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.Pain002CreatePayment409Response"];
                     };
                 };
@@ -1381,6 +2644,57 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "id": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "incomingPaymentId": null,
+                         *           "status": "Processing",
+                         *           "statusReason": "Recall request sent",
+                         *           "statusCode": null,
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00",
+                         *           "recallReason": {
+                         *             "code": "AC03",
+                         *             "description": "Invalid Creditor Account Number"
+                         *           }
+                         *         },
+                         *         {
+                         *           "id": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "incomingPaymentId": null,
+                         *           "status": "Unsuccessful",
+                         *           "statusReason": "The request was rejected by the counterparty (Closed Account)",
+                         *           "statusCode": "AC04",
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00",
+                         *           "recallReason": {
+                         *             "code": "AM09",
+                         *             "description": "Wrong Amount"
+                         *           }
+                         *         },
+                         *         {
+                         *           "id": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "incomingPaymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "status": "Successful",
+                         *           "statusReason": "We successfully received the incoming payment",
+                         *           "statusCode": null,
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00",
+                         *           "recallReason": {
+                         *             "code": "CUST",
+                         *             "description": "Requested By Customer"
+                         *           }
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50,
+                         *         "rowCount": 3
+                         *       }
+                         *     } */
                         "application/json": {
                             /** IEnumerable */
                             Result?: components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.PaymentRecallResponse"][];
@@ -1412,6 +2726,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError404Dto"];
                     };
                 };
@@ -1421,6 +2747,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError500Dto"];
                     };
                 };
@@ -1452,6 +2790,20 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "id": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "paymentId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "incomingPaymentId": null,
+                         *       "status": "Received",
+                         *       "statusReason": "Recall request received",
+                         *       "statusCode": null,
+                         *       "createdAt": "2024-06-14T10:52:02+00:00",
+                         *       "modifiedAt": "2024-06-14T11:17:42+00:00",
+                         *       "recallReason": {
+                         *         "code": "AC03",
+                         *         "description": "Invalid Creditor Account Number"
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentRecallCreationResponseExample"];
                     };
                 };
@@ -1479,6 +2831,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError404Dto"];
                     };
                 };
@@ -1488,6 +2852,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError500Dto"];
                     };
                 };
@@ -1537,6 +2913,16 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "One or more validation errors occurred.",
+                         *       "status": 400,
+                         *       "errors": {
+                         *         "recall-id": [
+                         *           "The value '460C7840-2600-4418-D-B026-C7F38DA3A737' is not valid."
+                         *         ]
+                         *       }
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.GetRecallByIdError400Dto"];
                     };
                 };
@@ -1555,6 +2941,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError404Dto"];
                     };
                 };
@@ -1564,6 +2962,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError500Dto"];
                     };
                 };
@@ -1606,6 +3016,9 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "Successful"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.PaymentRecallStatusResponse"];
                     };
                 };
@@ -1624,6 +3037,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError404Dto"];
                     };
                 };
@@ -1633,6 +3058,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 500,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Internal server error",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.RecallsError500Dto"];
                     };
                 };
@@ -1685,6 +3122,87 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "result": [
+                         *         {
+                         *           "traceId": "44e53e18-d7c0-4472-9f18-8c096fde241e",
+                         *           "paymentId": "aa8c95c7-10e9-4baa-abe5-eb7953cba3aa",
+                         *           "contractReferenceNumber": "010F215241625AXN",
+                         *           "status": "Successful",
+                         *           "statusReason": "The trace successfully completed. Payment has been received by beneficiary",
+                         *           "valueDate": "",
+                         *           "to": {
+                         *             "name": "Name identifying the creditor",
+                         *             "accountIdentifier": "DK7989000000012009"
+                         *           },
+                         *           "from": {
+                         *             "name": "Name identifying the debitor",
+                         *             "accountIdentifier": "DK6089000000026610"
+                         *           },
+                         *           "amount": 34355.5,
+                         *           "currency": "NOK",
+                         *           "paymentDetails": [],
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00"
+                         *         },
+                         *         {
+                         *           "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *           "paymentId": "0f0fd307-1b53-4dbc-8142-265721bff08d",
+                         *           "contractReferenceNumber": "010F21324037029A",
+                         *           "status": "Processing",
+                         *           "statusReason": "Trace request sent",
+                         *           "valueDate": "2024-02-06",
+                         *           "to": {
+                         *             "name": "Name identifying the creditor",
+                         *             "accountIdentifier": "56403960"
+                         *           },
+                         *           "from": {
+                         *             "name": "Name identifying the debitor",
+                         *             "accountIdentifier": "DK4089000000010674"
+                         *           },
+                         *           "amount": 234.567,
+                         *           "currency": "DKK",
+                         *           "paymentDetails": [
+                         *             "RemittanceInformation1",
+                         *             "RemittanceInformation2",
+                         *             "RemittanceInformation3",
+                         *             "RemittanceInformation4"
+                         *           ],
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00"
+                         *         },
+                         *         {
+                         *           "traceId": "c312fafc-f4cf-4042-9b32-8c5117874bb8",
+                         *           "paymentId": "aeb76501-258f-489f-825a-4d640c21200a",
+                         *           "contractReferenceNumber": "010F2092416237KU",
+                         *           "status": "Unsuccessful",
+                         *           "statusReason": "The request was rejected by the counterparty (Closed Account)",
+                         *           "valueDate": "",
+                         *           "to": {
+                         *             "name": "Name identifying the creditor",
+                         *             "accountIdentifier": "DE25201207003100124449"
+                         *           },
+                         *           "from": {
+                         *             "name": "Name identifying the debitor",
+                         *             "accountIdentifier": "LU074080000000026386"
+                         *           },
+                         *           "amount": 234.567,
+                         *           "currency": "SEK",
+                         *           "paymentDetails": [
+                         *             "RemittanceInformation1",
+                         *             "RemittanceInformation3",
+                         *             "RemittanceInformation4"
+                         *           ],
+                         *           "createdAt": "2024-06-14T10:52:02+00:00",
+                         *           "modifiedAt": "2024-06-14T11:17:42+00:00"
+                         *         }
+                         *       ],
+                         *       "pageInfo": {
+                         *         "currentPage": 1,
+                         *         "pageSize": 50,
+                         *         "rowCount": 3
+                         *       }
+                         *     } */
                         "application/json": {
                             /** IEnumerable */
                             Result?: components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.PaymentTraceResponse"][];
@@ -1725,6 +3243,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError404Dto"];
                     };
                 };
@@ -1734,6 +3258,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Internal server error",
+                         *       "status": 500,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError500Dto"];
                     };
                 };
@@ -1803,6 +3333,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError404Dto"];
                     };
                 };
@@ -1812,6 +3348,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Internal server error",
+                         *       "status": 500,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError500Dto"];
                     };
                 };
@@ -1852,6 +3394,32 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8",
+                         *       "paymentId": "0f0fd307-1b53-4dbc-8142-265721bff08d",
+                         *       "contractReferenceNumber": "contractReferenceNumber",
+                         *       "status": "Cancelled",
+                         *       "statusReason": "Cancelled by user",
+                         *       "valueDate": "2024-02-06",
+                         *       "to": {
+                         *         "name": "Name identifying the creditor",
+                         *         "accountIdentifier": "GB04SAPY60838200023131"
+                         *       },
+                         *       "from": {
+                         *         "name": "Name identifying the debitor",
+                         *         "accountIdentifier": "DK2789000000025555"
+                         *       },
+                         *       "amount": 9550.06,
+                         *       "currency": "GBP",
+                         *       "paymentDetails": [
+                         *         "RemittanceInformation1",
+                         *         "RemittanceInformation2",
+                         *         "RemittanceInformation3",
+                         *         "RemittanceInformation4"
+                         *       ],
+                         *       "createdAt": "2024-06-14T10:52:02+00:00",
+                         *       "modifiedAt": "2024-06-14T11:17:42+00:00"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentTraceCancelResponseExample"];
                     };
                 };
@@ -1888,6 +3456,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError404Dto"];
                     };
                 };
@@ -1897,6 +3471,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Internal server error",
+                         *       "status": 500,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError500Dto"];
                     };
                 };
@@ -1977,6 +3557,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError404Dto"];
                     };
                 };
@@ -1986,6 +3572,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Internal server error",
+                         *       "status": 500,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError500Dto"];
                     };
                 };
@@ -2031,6 +3623,9 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "status": "Successful"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.DomainServices.Public.Dto.PaymentTraceStatusResponse"];
                     };
                 };
@@ -2067,6 +3662,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Not Found",
+                         *       "status": 404,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError404Dto"];
                     };
                 };
@@ -2076,6 +3677,12 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                         *       "title": "Internal server error",
+                         *       "status": 500,
+                         *       "traceId": "d2404f75-e011-4683-9d2d-efd30943c6b8"
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.TracesError500Dto"];
                     };
                 };
@@ -2098,7 +3705,10 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Invoke a specified action for a given payment or direct debit */
+        /**
+         * Invoke a specified action for a given payment or direct debit
+         * @deprecated
+         */
         post: {
             parameters: {
                 query?: never;
@@ -2129,6 +3739,14 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "errorCode": "UnsupportedPaymentType",
+                         *           "errorDescription": "Requested action is not supported for this type of payment"
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentCancelFailureResponse"];
                     };
                 };
@@ -2147,6 +3765,18 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
+                        /** @example {
+                         *       "errors": [
+                         *         {
+                         *           "httpStatus": 404,
+                         *           "errorCode": null,
+                         *           "keyOrMessage": "Not Found",
+                         *           "interpolations": [],
+                         *           "details": null,
+                         *           "exception": null
+                         *         }
+                         *       ]
+                         *     } */
                         "application/json": components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.PaymentsError404Dto"];
                     };
                 };
@@ -2361,6 +3991,11 @@ export interface components {
         "BankingCircle.Payments.Api.Data.Payment.PaymentReAuthorizeFailureResponse": {
             /** List`1 */
             errors?: components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentReAuthorizeError"][] | null;
+        };
+        /** PaymentRejectFailureResponse */
+        "BankingCircle.Payments.Api.Data.Payment.PaymentRejectFailureResponse": {
+            /** List`1 */
+            errors?: components["schemas"]["BankingCircle.Payments.Api.Data.Payment.PaymentCancelError"][] | null;
         };
         /**
          * PaymentBulk
@@ -2913,6 +4548,54 @@ export interface components {
          * @description No data dto for Swagger generation
          */
         "BankingCircle.Payments.Api.Data.SwaggerExampleData.NoResponse": Record<string, never>;
+        /** Pacs008CreatePayment200RejectedResponseExample */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pacs008CreatePayment200RejectedResponseExample": {
+            cstmrPmtStsRpt?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.CustomPainDocuments.Pain002CreatePayment201AcceptedResponseExample.CustomerPaymentStatusReportV03"];
+        };
+        /**
+         * Pacs008CreatePayment201AcceptedResponseExample
+         * @description TODO: Rework to use pacs.002 types and example data.
+         */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pacs008CreatePayment201AcceptedResponseExample": {
+            cstmrPmtStsRpt?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.CustomPainDocuments.Pain002CreatePayment201AcceptedResponseExample.CustomerPaymentStatusReportV03"];
+        };
+        /**
+         * Pacs008CreatePayment400Response
+         * @description Dto for 400 response error type
+         */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pacs008CreatePayment400Response": {
+            /**
+             * Guid
+             * Format: uuid
+             */
+            readonly Id?: string;
+            Type?: components["schemas"]["BankingCircle.Payments.Api.Enum.PaymentBulkCreationFailureType"];
+            /** List`1 */
+            readonly Errors?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.SwaggerPaymentBulkPacs008CreationErrorDetail"][] | null;
+        };
+        /**
+         * Pacs008CreatePayment404Response
+         * @description Swagger type for 404 errors
+         */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pacs008CreatePayment404Response": {
+            /** List`1 */
+            errors?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.ExceptionErrorDetailDto"][] | null;
+            /** String */
+            account?: string | null;
+            /** String */
+            _links?: string | null;
+        };
+        /** Pacs008CreatePayment409Response */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pacs008CreatePayment409Response": {
+            /**
+             * Guid
+             * Format: uuid
+             */
+            readonly Id?: string;
+            Type?: components["schemas"]["BankingCircle.Payments.Api.Enum.PaymentBulkCreationFailureType"];
+            /** List`1 */
+            readonly Errors?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.SwaggerPaymentBulkPacs008CreationErrorDetailIdempotency"][] | null;
+        };
         /** Pain002CreatePayment200RejectedResponseExample */
         "BankingCircle.Payments.Api.Data.SwaggerExampleData.Pain002CreatePayment200RejectedResponseExample": {
             cstmrPmtStsRpt?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.CustomPainDocuments.Pain002CreatePayment201AcceptedResponseExample.CustomerPaymentStatusReportV03"];
@@ -3177,6 +4860,26 @@ export interface components {
             errors?: components["schemas"]["BankingCircle.Payments.Api.Data.SwaggerExampleData.ExceptionErrorDetailDto"][] | null;
         };
         /**
+         * SwaggerPaymentBulkPacs008CreationErrorDetail
+         * @description Swagger implementation for PaymentBulkPacs008CreationErrorDetail in order to control property names.
+         *                 CamelCase is selected by default.
+         *                 Newtonsoft.Json.JsonProperty used to control property names
+         *                 NB: Swagger uses NewtonSoft
+         */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.SwaggerPaymentBulkPacs008CreationErrorDetail": {
+            ErrorCode?: components["schemas"]["BankingCircle.Payments.Api.Enum.PaymentBulkPacs008CreationErrorCode"];
+            /** String */
+            ErrorDescription?: string | null;
+        };
+        /** SwaggerPaymentBulkPacs008CreationErrorDetailIdempotency */
+        "BankingCircle.Payments.Api.Data.SwaggerExampleData.SwaggerPaymentBulkPacs008CreationErrorDetailIdempotency": {
+            /** String */
+            PaymentBulkId?: string | null;
+            ErrorCode?: components["schemas"]["BankingCircle.Payments.Api.Enum.PaymentBulkPacs008CreationErrorCode"];
+            /** String */
+            ErrorDescription?: string | null;
+        };
+        /**
          * SwaggerPaymentBulkPainCreationErrorDetail
          * @description Swagger implementation for PaymentBulkPainCreationErrorDetail in order to control property names.
          *                 CamelCase is selected by default.
@@ -3279,12 +4982,17 @@ export interface components {
          * PaymentBulkCreationFailureType
          * @enum {string}
          */
-        "BankingCircle.Payments.Api.Enum.PaymentBulkCreationFailureType": "Csv" | "Pain001";
+        "BankingCircle.Payments.Api.Enum.PaymentBulkCreationFailureType": "Csv" | "Pain001" | "Pacs008";
         /**
          * PaymentBulkCreationStatus
          * @enum {string}
          */
         "BankingCircle.Payments.Api.Enum.PaymentBulkCreationStatus": "None" | "ScaPending" | "PendingApproval" | "Approved" | "PendingProcessing" | "DeclinedByApprover" | "Rejected" | "Processed" | "DeclinedByAuthorizer" | "ScaExpired" | "ScaFailed" | "Authorized";
+        /**
+         * PaymentBulkPacs008CreationErrorCode
+         * @enum {string}
+         */
+        "BankingCircle.Payments.Api.Enum.PaymentBulkPacs008CreationErrorCode": "Unknown" | "UnsupportedDocumentVersion" | "UnsupportedAcceptResponseVersion" | "InvalidRequest" | "InvalidFile" | "InvalidFileSize" | "InvalidFileExtension" | "InvalidFileContentType" | "DuplicateFileUpload" | "UnsupportedAcceptValue" | "DuplicateIdempotencyKey" | "InvalidIdempotencyKey";
         /**
          * PaymentBulkPainCreationErrorCode
          * @enum {string}
@@ -3911,6 +5619,11 @@ export interface components {
             /** @description Current status */
             status?: components["schemas"]["BankingCircle.Payments.DomainServices.Public.Enum.PaymentStatus"];
             /**
+             * String
+             * @description Routing information
+             */
+            routingStatus?: string | null;
+            /**
              * Nullable`1
              * Format: date-time
              * @description Timestamp for when the payment was processed
@@ -4033,7 +5746,10 @@ export interface components {
             /**
              * String
              * @description Who will be charged with the payment fee<br />
-             *                 Only supported value currently is "SHA" - Shared expense
+             *                 Supported values are:<br />
+             *                 "BEN" - Beneficiary bears Transaction charges"<br />
+             *                 "OUR" - Ordering customer bears Transaction charges<br />
+             *                 "SHA" - Transaction charges to be shared
              */
             chargeBearer: string;
             /** @description Remittance information captures the free-text message between debtor and creditor */
@@ -4416,7 +6132,7 @@ export interface components {
             transferCurrency?: string | null;
             /**
              * Nullable`1
-             * Format: int64
+             * Format: double
              */
             maximumAmount?: number | null;
         };
